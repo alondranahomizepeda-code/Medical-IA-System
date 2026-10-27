@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.env/
+env/
+
+# Runtime data (uploaded images, trained models, logs)
+data/
+logs/
+
+# Database
+*.db
+*.sqlite3
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Agent conversations (privacy — do not share)
+.gemini/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary
+*.tmp
+*.bak

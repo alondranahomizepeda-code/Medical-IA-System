@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: medical-system
+  labels:
+    app.kubernetes.io/name: medical-ai-system
+    app.kubernetes.io/environment: production

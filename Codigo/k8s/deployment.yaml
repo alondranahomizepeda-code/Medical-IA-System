@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medical-ai-deployment
+  namespace: medical-system
+  labels:
+    app: medical-ai-app
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: medical-ai-app
+  template:
+    metadata:
+      labels:
+        app: medical-ai-app
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+      containers:
+        - name: medical-ai-backend
+          image: ghcr.io/medical-ai/scoliosis-diagnosis-system:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: medical-ai-config
+            - secretRef:
+                name: medical-ai-secret
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "4Gi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 2
+          volumeMounts:
+            - name: clinical-data-storage
+              mountPath: /app/data
+            - name: ephemeral-logs
+              mountPath: /app/logs
+      volumes:
+        - name: clinical-data-storage
+          persistentVolumeClaim:
+            claimName: medical-ai-storage-pvc
+        - name: ephemeral-logs
+          emptyDir: {}

@@ -1,0 +1,39 @@
+# Virtual Environments
+venv/
+Codigo/venv/
+env/
+ENV/
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Sensitive credentials
+.env
+*.pem
+*.key
+
+# Application data: ignore ephemeral uploads and logs, but track models and benchmark results
+Codigo/logs/*.log
+Codigo/data/uploads/*
+Codigo/data/processed/*
+Codigo/data/reports/*
+Codigo/data/*.db
+Codigo/data/*.sqlite3
+
+# Keep data structure and model artifacts
+!Codigo/data/models/**
+!Codigo/data/confusion_matrix.png
+!Codigo/data/*.json

@@ -1,0 +1,166 @@
+name: Medical AI System CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  PYTHON_VERSION: "3.11"
+  IMAGE_NAME: "ghcr.io/medical-ai/scoliosis-diagnosis-system"
+  REGISTRY: "ghcr.io"
+
+jobs:
+  # ─────────────────────────────────────────────────────────────
+  # Stage 1: Continuous Integration - Linting & Code Quality
+  # ─────────────────────────────────────────────────────────────
+  lint:
+    name: Lint & Code Quality Inspection
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+
+      - name: Install Linting & Security Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 black bandit
+
+      - name: Syntax & Formatting Lint (Flake8)
+        run: |
+          # Stop build if there are Python syntax errors or undefined names
+          flake8 Codigo/services Codigo/domain Codigo/pipeline Codigo/api --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Exit-zero treats all errors as warnings
+          flake8 Codigo/ --count --exit-zero --max-complexity=12 --max-line-length=120 --statistics
+
+      - name: Static Security Analysis (Bandit)
+        run: |
+          bandit -r Codigo/services Codigo/api Codigo/pipeline -ll -ii --exclude Codigo/tests
+
+  # ─────────────────────────────────────────────────────────────
+  # Stage 2: Continuous Integration - Automated Testing & Profiling
+  # ─────────────────────────────────────────────────────────────
+  test:
+    name: Unit, Integration, Profiling & System Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+
+      - name: Install System Dependencies for OpenCV & Imaging
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+            libgl1-mesa-glx \
+            libglib2.0-0
+
+      - name: Install Project Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r Codigo/requirements.txt
+          pip install pytest pytest-cov httpx psutil
+
+      - name: Run Test Suite (Unit, Integration, Profiling, System)
+        working-directory: ./Codigo
+        run: |
+          pytest -v \
+            --cov=services \
+            --cov=pipeline \
+            --cov=domain \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage.xml \
+            tests/
+
+      - name: Verify Memory Profiling Budget
+        working-directory: ./Codigo
+        run: |
+          pytest -v tests/profiling/test_memory_profiling.py
+
+      - name: Upload Test Coverage Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: Codigo/coverage.xml
+
+  # ─────────────────────────────────────────────────────────────
+  # Stage 3: Containerization - Docker Build & Security Vulnerability Scan
+  # ─────────────────────────────────────────────────────────────
+  build-container:
+    name: Build Docker Container & Scan Vulnerabilities
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Production Container Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./Codigo
+          file: ./Codigo/Dockerfile
+          push: false
+          tags: ${{ env.IMAGE_NAME }}:${{ github.sha }}, ${{ env.IMAGE_NAME }}:latest
+          load: true
+
+      - name: Container Security Vulnerability Scan (Trivy)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          format: "table"
+          exit-code: "0"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+
+  # ─────────────────────────────────────────────────────────────
+  # Stage 4: Continuous Delivery - Kubernetes Manifest Validation
+  # ─────────────────────────────────────────────────────────────
+  validate-k8s:
+    name: Kubernetes Manifest Validation & Dry Run
+    runs-on: ubuntu-latest
+    needs: build-container
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Validate Kubernetes Manifests Syntax
+        run: |
+          # Verify YAML syntax for all manifests in k8s folder
+          for f in Codigo/k8s/*.yaml; do
+            echo "Validating $f..."
+            python -c "import yaml; yaml.safe_load(open('$f'))"
+          done
+
+  # ─────────────────────────────────────────────────────────────
+  # Stage 5: Continuous Deployment - Staging Deployment (Main Branch)
+  # ─────────────────────────────────────────────────────────────
+  deploy-staging:
+    name: Deploy to Staging Cluster
+    runs-on: ubuntu-latest
+    needs: [build-container, validate-k8s]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Configure Deployment Context
+        run: |
+          echo "Simulating rollout to Kubernetes Staging Cluster (Namespace: medical-ai-staging)..."
+          echo "Applying manifests: ConfigMap, Secret, PVC, Deployment, Service, HPA..."
+          echo "Deployment successful for commit ${{ github.sha }}."

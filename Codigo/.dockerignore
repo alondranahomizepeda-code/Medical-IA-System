@@ -1,0 +1,32 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Local Virtual Environments
+venv/
+env/
+ENV/
+
+# Local sensitive or volatile runtime data
+logs/*.log
+data/uploads/*
+data/reports/*.pdf
+data/processed/*
+!data/models/**
+
+# Git and IDE configs
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Development / scratch scripts
+scratch/
+generate_test_samples.py
+ver_db.py
