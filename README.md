@@ -43,12 +43,10 @@ Evaluated on the independent 101-image held-out test split from the Roboflow Sco
 
 | Metric | Score | Clinical Interpretation |
 | :--- | :---: | :--- |
-| **Overall Accuracy** | **85.15%** | 86 of 101 test radiographs correctly diagnosed. |
-| **Macro Precision** | **87.22%** | High diagnostic confidence across all pathological categories. |
-| **Macro Recall (Sensitivity)** | **85.15%** | Robust detection rate for both healthy and scoliosis patients. |
-| **Macro F1-Score** | **85.98%** | Balanced harmonic mean between precision and sensitivity. |
-| **S-Curve Precision** | **100.00%** | Zero false alarms between C-curve and S-curve morphologies. |
-| **Average E2E Latency** | **581.17 ms** | Sub-second response time compliant with clinical screening standards. |
+| **Accuracy** | **85.15%** | 86 of 101 test radiographs correctly diagnosed by the system. |
+| **Precision** | **87.22%** | High diagnostic confidence across all pathological categories. |
+| **Recall** | **85.15%** | Balanced detection rate for both healthy and scoliosis patients. |
+| **F1-Score** | **85.98%** | Harmonic mean balancing precision and recall. |
 
 The detailed quantitative confusion matrix chart is available at [`Codigo/data/confusion_matrix.png`](Codigo/data/confusion_matrix.png) and full evaluation metrics are tracked in [`Codigo/data/models/scoliosis_classifier_v1.0.0/evaluation_results.json`](Codigo/data/models/scoliosis_classifier_v1.0.0/evaluation_results.json).
 
