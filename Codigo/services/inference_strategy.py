@@ -145,7 +145,6 @@ class ScoliosisStrategy(IMLStrategy):
             candidate_paths = [
                 BASE_DIR / "data" / "annotations" / f"{stem}.txt",
                 BASE_DIR.parent / "Imagenes" / f"{stem}.txt",
-                Path(r"c:\Users\Nahomi\Desktop\Quinto Semestre\Software Engineering II\Muestras_Prueba") / f"{stem}.txt",
             ]
             for split in ["train", "valid", "test"]:
                 candidate_paths.append(SCOLIOSIS_DATASET_DIR / "labels" / split / f"{stem}.txt")
