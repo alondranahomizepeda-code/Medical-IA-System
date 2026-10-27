@@ -1,6 +1,6 @@
 # Scoliosis AI Diagnostic System
 
-[![CI/CD Pipeline](https://github.com/alondranahomizepeda-code/scoliosis-project/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/alondranahomizepeda-code/scoliosis-project/actions)
+[![CI/CD Pipeline](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions)
 [![Python Version](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![Test Coverage](https://img.shields.io/badge/coverage-76%25-brightgreen.svg)]()
 [![Model Accuracy](https://img.shields.io/badge/accuracy-85.15%25-success.svg)]()
@@ -96,8 +96,8 @@ scoliosis-project/
 Clone the repository and navigate into the project directory:
 
 ```bash
-git clone https://github.com/alondranahomizepeda-code/scoliosis-project.git
-cd scoliosis-project/Codigo
+git clone https://github.com/alondranahomizepeda-code/Medical-IA-System.git
+cd Medical-IA-System/Codigo
 ```
 
 Create and activate a virtual environment:
