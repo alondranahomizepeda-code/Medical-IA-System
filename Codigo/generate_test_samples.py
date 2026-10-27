@@ -1,11 +1,11 @@
 """
-Generador de Muestras de Prueba — Scoliosis & Spine Classification
-==================================================================
-Extrae radiografías representativas reales del dataset de escoliosis para:
-  1. NO ESCOLIOSIS (Columna normal)
-  2. ESCOLIOSIS GRAVE (EN C) (Curvatura simple en C)
-  3. ESCOLIOSIS SEVERA (EN S) (Doble curvatura en S)
-  4. Muestra de prueba de color inválido (para probar el rechazo temprano Fail-Fast)
+Test Sample Generator — Scoliosis & Spine Classification
+=========================================================
+Extracts representative spinal radiographs from the scoliosis dataset for:
+  1. NO SCOLIOSIS (Normal physiological spine)
+  2. SEVERE SCOLIOSIS (C-CURVE) (Single C-shaped curve)
+  3. SEVERE SCOLIOSIS (S-CURVE) (Double S-shaped curve)
+  4. Invalid color image sample (for testing Fail-Fast pipeline validation)
 """
 
 import os
@@ -19,7 +19,7 @@ from ai.transfer_learning import analyze_spine_curve
 
 
 def generate_samples():
-    print("[*] Extrayendo muestras reales del dataset de escoliosis...")
+    print("[*] Extracting real patient samples from scoliosis dataset...")
 
     output_dirs = [
         Path(r"c:\Users\Nahomi\Desktop\Quinto Semestre\Software Engineering II\Proyecto\Imagenes"),
@@ -67,7 +67,7 @@ def generate_samples():
         if all(len(v) >= 3 for v in found.values()):
             break
 
-    print(f"Muestras encontradas: Normal: {len(found['normal'])}, Grave en C: {len(found['c_curve'])}, Severa en S: {len(found['s_curve'])}")
+    print(f"Samples extracted: Normal: {len(found['normal'])}, Severe C-Curve: {len(found['c_curve'])}, Severe S-Curve: {len(found['s_curve'])}")
 
     for out_dir in output_dirs:
         for idx, (img_path, _, _) in enumerate(found["normal"]):
@@ -84,12 +84,11 @@ def generate_samples():
         color_arr[:, :, 2] = 40
         Image.fromarray(color_arr).save(out_dir / "prueba_color_invalido.jpg")
 
-    print("[+] Muestras de prueba de escoliosis generadas exitosamente!")
+    print("[+] Scoliosis test samples generated successfully!")
     print("   -> paciente_normal_no_escoliosis_1.jpg (Normal)")
-    print("   -> paciente_escoliosis_grave_en_c_1.jpg (Escoliosis en C)")
-    print("   -> paciente_escoliosis_severa_en_s_1.jpg (Escoliosis en S)")
-    print("   -> prueba_color_invalido.jpg (Prueba de rechazo Fail-Fast)")
-
+    print("   -> paciente_escoliosis_grave_en_c_1.jpg (C-Curve Scoliosis)")
+    print("   -> paciente_escoliosis_severa_en_s_1.jpg (S-Curve Scoliosis)")
+    print("   -> prueba_color_invalido.jpg (Fail-Fast rejection test)")
 
 
 if __name__ == "__main__":

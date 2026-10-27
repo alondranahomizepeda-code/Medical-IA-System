@@ -196,23 +196,23 @@ class ScoliosisStrategy(IMLStrategy):
                         break
 
             # Explicit check for normal / healthy non-scoliosis patient files
-            if "normal" in stem_lower or "no_escoliosis" in stem_lower or "no-escoliosis" in stem_lower or "sano" in stem_lower:
+            if "normal" in stem_lower or "no_escoliosis" in stem_lower or "no-escoliosis" in stem_lower or "sano" in stem_lower or "no_scoliosis" in stem_lower:
                 return {
                     "suggested_class": 0,
-                    "affected_vertebrae": "Ninguna",
-                    "curve_type": "Normal",
-                    "curve_detail": "Alineación vertebral fisiológica normal sin signos radiológicos de escoliosis.",
+                    "affected_vertebrae": "None",
+                    "curve_type": "Normal Physiological Alignment",
+                    "curve_detail": "Normal physiological vertebral alignment without radiological signs of scoliosis.",
                     "apex_vertebra": "N/A",
                 }
 
         # If no label file, run automated vertebral centroid tracking on image pixels
         if original_image is not None:
             info = estimate_vertebrae_from_image(original_image)
-            if info["curve_type"] == "Normal":
+            if "Normal" in info["curve_type"]:
                 info["suggested_class"] = 0
-                info["affected_vertebrae"] = "Ninguna"
+                info["affected_vertebrae"] = "None"
                 info["apex_vertebra"] = "N/A"
-            elif info["curve_type"] == "Curvatura en S (Doble)":
+            elif "S-Shaped" in info["curve_type"] or "S (Doble)" in info["curve_type"]:
                 info["suggested_class"] = 2
             else:
                 info["suggested_class"] = 1
@@ -222,8 +222,8 @@ class ScoliosisStrategy(IMLStrategy):
         return {
             "suggested_class": 1,
             "affected_vertebrae": "T7 - T11",
-            "curve_type": "Curvatura en C (Simple)",
-            "curve_detail": "Curvatura simple en forma de C en segmento torácico con ápex en T9.",
+            "curve_type": "C-Shaped Curve (Simple)",
+            "curve_detail": "Single C-shaped curvature in thoracic spine with apex at T9.",
             "apex_vertebra": "T9",
         }
 

@@ -55,8 +55,8 @@ def analyze_spine_curve(
     """
     if not vertebrae_boxes or len(vertebrae_boxes) < 4:
         if spine_class == 2:
-            return "NO ESCOLIOSIS", [], "Columna alineada sin desviación patológica."
-        return "ESCOLIOSIS GRAVE (EN C)", ["T7 - T11"], "Curvatura simple estimada en región torácica/lumbar."
+            return "NO ESCOLIOSIS", [], "Normal spinal alignment without pathological deviation."
+        return "ESCOLIOSIS GRAVE (EN C)", ["T7 - T11"], "Single curvature estimated in thoracolumbar region."
 
     # Sort vertebrae from cranial to caudal (top to bottom by y coordinate)
     v_sorted = sorted(vertebrae_boxes, key=lambda v: v[1])
@@ -92,7 +92,7 @@ def analyze_spine_curve(
 
     # Check for normal alignment (calibrated physiological baseline threshold: 0.042)
     if spine_class == 2 or (spine_class is None and max_dev < 0.042):
-        return "NO ESCOLIOSIS", [], "Alineación vertebral fisiológica normal (sin escoliosis)."
+        return "NO ESCOLIOSIS", [], "Normal physiological vertebral alignment (no scoliosis)."
 
     # Smooth deviations along spine to reduce noise
     smoothed = np.convolve(deviations, [0.2, 0.6, 0.2], mode="same")
@@ -128,15 +128,15 @@ def analyze_spine_curve(
     if is_s_curve:
         classification = "ESCOLIOSIS SEVERA (EN S)"
         detail = (
-            f"Doble curvatura en forma de 'S'. Ápice principal en vértebra {apex_v}. "
-            f"Vértebras afectadas: {aff_str}."
+            f"Double S-shaped structural curve. Main apex at vertebra {apex_v}. "
+            f"Affected vertebrae: {aff_str}."
         )
     else:
         classification = "ESCOLIOSIS GRAVE (EN C)"
-        curve_side = "derecha" if deviations[apex_idx] > 0 else "izquierda"
+        curve_side = "right" if deviations[apex_idx] > 0 else "left"
         detail = (
-            f"Curvatura simple en forma de 'C' con convexidad a la {curve_side}. "
-            f"Ápice en {apex_v}. Vértebras afectadas: {aff_str}."
+            f"Single C-shaped curve with convexity to the {curve_side}. "
+            f"Apex at {apex_v}. Affected vertebrae: {aff_str}."
         )
 
     return classification, affected_desc, detail
@@ -203,18 +203,18 @@ def estimate_vertebrae_from_image(image_array: np.ndarray) -> Dict:
         is_s_curve = (len(pos_peaks) >= 1 and len(neg_peaks) >= 1) and max_dev >= 0.075
 
         if max_dev < 0.065:
-            curve_type = "Normal"
-            curve_detail = "Alineación vertebral fisiológica normal sin signos radiológicos de escoliosis."
-            affected_vertebrae = "Ninguna"
+            curve_type = "Normal Physiological Alignment"
+            curve_detail = "Normal physiological vertebral alignment without radiological signs of scoliosis."
+            affected_vertebrae = "None"
             apex_v = "N/A"
         elif is_s_curve:
-            curve_type = "Curvatura en S (Doble)"
-            curve_detail = f"Doble curvatura en 'S'. Ápice en {v_names[apex_idx]}. Vértebras afectadas: {affected_vertebrae}."
+            curve_type = "S-Shaped Curve (Double)"
+            curve_detail = f"Double S-shaped structural curve. Apex at {v_names[apex_idx]}. Affected vertebrae: {affected_vertebrae}."
             apex_v = v_names[apex_idx]
         else:
-            curve_type = "Curvatura en C (Simple)"
-            side = "derecha" if deviations[apex_idx] > 0 else "izquierda"
-            curve_detail = f"Curvatura simple en 'C' hacia la {side}. Ápice en {v_names[apex_idx]}. Vértebras afectadas: {affected_vertebrae}."
+            curve_type = "C-Shaped Curve (Simple)"
+            side = "right" if deviations[apex_idx] > 0 else "left"
+            curve_detail = f"Single C-shaped curve toward the {side}. Apex at {v_names[apex_idx]}. Affected vertebrae: {affected_vertebrae}."
             apex_v = v_names[apex_idx]
 
         return {
@@ -228,8 +228,8 @@ def estimate_vertebrae_from_image(image_array: np.ndarray) -> Dict:
         logger.warning(f"Error in automatic vertebral curvature estimation: {e}")
         return {
             "affected_vertebrae": "T7 - T11",
-            "curve_type": "Curvatura en C (Simple)",
-            "curve_detail": "Curvatura escoliótica en región toracolumbar.",
+            "curve_type": "C-Shaped Curve (Simple)",
+            "curve_detail": "Scoliotic curvature in thoracolumbar region.",
             "apex_vertebra": "T9",
             "max_deviation": 0.05,
         }

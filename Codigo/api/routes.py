@@ -184,9 +184,9 @@ def create_router(
         """Generate and send a 6-digit password recovery code via simulated SMS / CMD."""
         user = auth_service._user_repo.find_by_username(request.username)
         if not user:
-            raise HTTPException(status_code=404, detail=f"Usuario '{request.username}' no encontrado.")
+            raise HTTPException(status_code=404, detail=f"User '{request.username}' not found.")
         if not user.is_active:
-            raise HTTPException(status_code=400, detail="Esta cuenta de usuario está desactivada.")
+            raise HTTPException(status_code=400, detail="This user account is deactivated.")
 
         import random
         from datetime import datetime, timedelta
@@ -203,10 +203,10 @@ def create_router(
         logger = get_logger("PasswordRecovery")
         logger.info(" ")
         logger.info("=" * 64)
-        logger.info(" [RECUPERACION DE CONTRASENA] - Medical AI System")
-        logger.info(f" Usuario: '{request.username}' ({user.full_name})")
-        logger.info(f" CODIGO DE RECUPERACION (SMS/OTP): {code}")
-        logger.info(f" Vigencia: 15 minutos (Expira: {expires_at.strftime('%H:%M:%S')} UTC)")
+        logger.info(" [PASSWORD RECOVERY] - Medical AI System")
+        logger.info(f" User: '{request.username}' ({user.full_name})")
+        logger.info(f" RECOVERY CODE (SMS/OTP): {code}")
+        logger.info(f" Validity: 15 minutes (Expires: {expires_at.strftime('%H:%M:%S')} UTC)")
         logger.info("=" * 64)
         logger.info(" ")
 
@@ -223,27 +223,27 @@ def create_router(
         if not recovery_data:
             raise HTTPException(
                 status_code=400, 
-                detail="No hay una solicitud de recuperación activa para este usuario o el código ha expirado."
+                detail="No active recovery request found for this user or code has expired."
             )
 
         from datetime import datetime
         if datetime.utcnow() > recovery_data["expires_at"]:
             del _recovery_codes[request.username]
-            raise HTTPException(status_code=400, detail="El código de recuperación ha expirado. Solicita uno nuevo.")
+            raise HTTPException(status_code=400, detail="Recovery code has expired. Please request a new one.")
 
         if recovery_data["code"] != request.code.strip():
             recovery_data["attempts"] += 1
             if recovery_data["attempts"] >= 3:
                 del _recovery_codes[request.username]
-                raise HTTPException(status_code=400, detail="Demasiados intentos fallidos. Solicita un nuevo código.")
-            raise HTTPException(status_code=401, detail="Código de recuperación incorrecto. Verifica tu consola/SMS.")
+                raise HTTPException(status_code=400, detail="Too many failed attempts. Please request a new code.")
+            raise HTTPException(status_code=401, detail="Incorrect recovery code. Please check your console/SMS.")
 
         try:
             auth_service.update_password(request.username, request.new_password)
             del _recovery_codes[request.username]
             return {
                 "status": "success",
-                "message": f"Contraseña actualizada exitosamente para el usuario '{request.username}'. Ya puedes iniciar sesión.",
+                "message": f"Password successfully updated for user '{request.username}'. You can now log in.",
             }
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
