@@ -214,6 +214,6 @@ kubectl get hpa -n scoliosis-system
 
 ## Authors & Academic Credits
 
-- **Course:** Software Engineering II (Ingeniería de Software II)
-- **Academic Term:** Quinto Semestre, 2026
-- **Team:** Team 3 (Equipo 3)
+- **Course:** Software Engineering II 
+- **Academic Term:** Fifth Semester, 2026B
+- **Team:** Team 3 
