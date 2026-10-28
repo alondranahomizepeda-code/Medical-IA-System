@@ -14,8 +14,8 @@ Intelligent clinical decision support system for scoliosis detection, spinal cur
 
 - **Multi-Class Pathological Classification:**
   1. `NO SCOLIOSIS`: Physiologically aligned spine with normal plumb-line tolerance ($<0.042$ coronal deviation).
-  2. `GRAVE SCOLIOSIS (C-CURVE)`: Single structural scoliosis curvature with identified apex and coronal convexity.
-  3. `SEVERE SCOLIOSIS (S-CURVE)`: Double structural curvature with dual thoracic and lumbar inflection points.
+  2. `SERIOUS SCOLIOSIS (C-CURVE)` (Escoliosis Grave): Single structural scoliosis curvature with identified apex and coronal convexity.
+  3. `SEVERE SCOLIOSIS (S-CURVE)` (Escoliosis Severa): Double structural curvature with dual thoracic and lumbar inflection points.
 - **Anatomical Vertebral Localization:**
   - Automated tracking of spinal landmarks ($T1-T12$ and $L1-L5$).
   - Apex vertebra identification and affected vertebral range span (e.g., $T7 - T11$, $L1 - L4$).
