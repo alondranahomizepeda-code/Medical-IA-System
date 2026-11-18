@@ -37,8 +37,9 @@ LABEL maintainer="Equipo 3 - Software Engineering II" \
 
 WORKDIR /app
 
-# Install minimal runtime OS dependencies (OpenCV headless & image processing)
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install minimal runtime OS dependencies with security patches (OpenCV headless & image processing)
+RUN apt-get update && apt-get upgrade -y --no-install-recommends && \
+    apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
     curl \
@@ -48,8 +49,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=builder /build/wheels /wheels
 COPY --from=builder /build/requirements.txt .
 
-# Install wheels without compiler overhead
-RUN pip install --no-cache-dir /wheels/* && rm -rf /wheels
+# Upgrade core packaging tools to patch CVEs and install wheels without compiler overhead
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir /wheels/* && rm -rf /wheels
 
 # Create dedicated non-root application user for clinical data security compliance
 RUN groupadd -r medicalgroup && useradd -r -g medicalgroup -d /app medicaluser

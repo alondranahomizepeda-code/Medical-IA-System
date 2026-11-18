@@ -4,14 +4,14 @@
 # ============================================================
 
 # --- Web Framework & API Gateway ---
-fastapi==0.115.0
+fastapi>=0.115.6
 uvicorn[standard]==0.30.6
-python-multipart==0.0.9
+python-multipart>=0.0.18
 
 # --- AI / Machine Learning (Transfer Learning) ---
 tensorflow==2.18.0
 numpy==1.26.4
-Pillow==10.4.0
+Pillow>=11.0.0
 scikit-learn==1.5.2
 
 # --- Database & Persistence (Repository Pattern) ---
@@ -20,6 +20,7 @@ aiosqlite==0.20.0
 
 # --- Authentication & Security ---
 python-jose[cryptography]==3.3.0
+cryptography>=44.0.1
 passlib[bcrypt]==1.7.4
 bcrypt==4.2.0
 
