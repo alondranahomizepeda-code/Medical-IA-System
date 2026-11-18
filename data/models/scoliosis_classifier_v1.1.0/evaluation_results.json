@@ -1,0 +1,290 @@
+{
+  "model_name": "scoliosis_classifier",
+  "model_version": "1.1.0",
+  "split": "test",
+  "evaluated_component": "CNN softmax output (same path as the Inference Service)",
+  "total_samples": 101,
+  "total_test_samples": 101,
+  "accuracy": 0.8812,
+  "overall_accuracy": 0.8812,
+  "balanced_accuracy": 0.872,
+  "precision": 0.8923,
+  "macro_precision": 0.8923,
+  "recall": 0.872,
+  "macro_recall": 0.872,
+  "f1_score": 0.8807,
+  "macro_f1": 0.8807,
+  "weighted_f1": 0.8814,
+  "cohen_kappa": 0.8133,
+  "confusion_matrix": [
+    [
+      29,
+      4,
+      0
+    ],
+    [
+      2,
+      41,
+      2
+    ],
+    [
+      0,
+      4,
+      19
+    ]
+  ],
+  "predicts_single_class": false,
+  "majority_class_baseline": {
+    "class_id": 1,
+    "class": "ESCOLIOSIS GRAVE (EN C)",
+    "accuracy": 0.4455,
+    "balanced_accuracy": 0.3333,
+    "f1_score": 0.2055
+  },
+  "per_class_metrics": {
+    "NO ESCOLIOSIS": {
+      "precision": 0.9355,
+      "recall_sensitivity": 0.8788,
+      "specificity": 0.9706,
+      "f1_score": 0.9062,
+      "support": 33,
+      "tp": 29,
+      "fn": 4,
+      "fp": 2,
+      "tn": 66
+    },
+    "ESCOLIOSIS GRAVE (EN C)": {
+      "precision": 0.8367,
+      "recall_sensitivity": 0.9111,
+      "specificity": 0.8571,
+      "f1_score": 0.8723,
+      "support": 45,
+      "tp": 41,
+      "fn": 4,
+      "fp": 8,
+      "tn": 48
+    },
+    "ESCOLIOSIS SEVERA (EN S)": {
+      "precision": 0.9048,
+      "recall_sensitivity": 0.8261,
+      "specificity": 0.9744,
+      "f1_score": 0.8636,
+      "support": 23,
+      "tp": 19,
+      "fn": 4,
+      "fp": 2,
+      "tn": 76
+    }
+  },
+  "calibration": {
+    "ece": 0.1187,
+    "bins": [
+      {
+        "range": "[0.00, 0.20]",
+        "count": 0,
+        "empirical_accuracy": 0.0,
+        "mean_confidence": 0.0
+      },
+      {
+        "range": "[0.20, 0.40]",
+        "count": 0,
+        "empirical_accuracy": 0.0,
+        "mean_confidence": 0.0
+      },
+      {
+        "range": "[0.40, 0.60]",
+        "count": 0,
+        "empirical_accuracy": 0.0,
+        "mean_confidence": 0.0
+      },
+      {
+        "range": "[0.60, 0.80]",
+        "count": 0,
+        "empirical_accuracy": 0.0,
+        "mean_confidence": 0.0
+      },
+      {
+        "range": "[0.80, 1.00]",
+        "count": 101,
+        "empirical_accuracy": 0.8812,
+        "mean_confidence": 0.9999
+      }
+    ]
+  },
+  "quality_gate": {
+    "approved": true,
+    "min_macro_f1": 0.7,
+    "min_class_recall": 0.6,
+    "reasons": []
+  },
+  "error_breakdown": {
+    "NO ESCOLIOSIS -> ESCOLIOSIS GRAVE (EN C)": 4,
+    "ESCOLIOSIS SEVERA (EN S) -> ESCOLIOSIS GRAVE (EN C)": 4,
+    "ESCOLIOSIS GRAVE (EN C) -> NO ESCOLIOSIS": 2,
+    "ESCOLIOSIS GRAVE (EN C) -> ESCOLIOSIS SEVERA (EN S)": 2
+  },
+  "total_errors": 12,
+  "error_rate": 0.1188,
+  "failure_cases": [
+    {
+      "file_name": "N9-N-F-13_1_0-Copy_jpg.rf.8d4dad13e3006ffbc1b1f603ddc5d32c.jpg",
+      "true_class_id": 0,
+      "true_class_name": "NO ESCOLIOSIS",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 0.9998,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0002,
+        "ESCOLIOSIS GRAVE (EN C)": 0.9998,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-28-Feb-2017-291-O-AP_jpg.rf.4bbd838dca098dfd0b86d3488ccb4964.jpg",
+      "true_class_id": 2,
+      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 0.9999,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0001,
+        "ESCOLIOSIS GRAVE (EN C)": 0.9999,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-28-Feb-2017-294-B-AP_jpg.rf.87ab9d962b6651cf88353afab739b95f.jpg",
+      "true_class_id": 0,
+      "true_class_name": "NO ESCOLIOSIS",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 0.9999,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0001,
+        "ESCOLIOSIS GRAVE (EN C)": 0.9999,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-28-Feb-2017-295-F-AP_jpg.rf.2bc79d6132b9e0ff2d405ee640991d2a.jpg",
+      "true_class_id": 2,
+      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 1.0,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0,
+        "ESCOLIOSIS GRAVE (EN C)": 1.0,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-28-Feb-2017-295-H-AP_jpg.rf.e51943e172ed2cc7566035137b789ac0.jpg",
+      "true_class_id": 2,
+      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 1.0,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0,
+        "ESCOLIOSIS GRAVE (EN C)": 1.0,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-28-Feb-2017-307-A-AP_jpg.rf.daab768e834a55c1da0e927a016d527a.jpg",
+      "true_class_id": 1,
+      "true_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_id": 0,
+      "pred_class_name": "NO ESCOLIOSIS",
+      "confidence": 0.9999,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.9999,
+        "ESCOLIOSIS GRAVE (EN C)": 0.0001,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-28-Feb-2017-307-B-AP_jpg.rf.f0ec4dd30b69722d282ceb2ef895127a.jpg",
+      "true_class_id": 1,
+      "true_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_id": 0,
+      "pred_class_name": "NO ESCOLIOSIS",
+      "confidence": 0.9999,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.9999,
+        "ESCOLIOSIS GRAVE (EN C)": 0.0001,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-28-Feb-2017-310-B-AP_jpg.rf.6b40d763c14c24d49b69cfe47f0de8d4.jpg",
+      "true_class_id": 2,
+      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 1.0,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0,
+        "ESCOLIOSIS GRAVE (EN C)": 1.0,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-30-Dec-2016-159-B-AP_jpg.rf.d7b47e6d995753c9615541128bd4472d.jpg",
+      "true_class_id": 0,
+      "true_class_name": "NO ESCOLIOSIS",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 1.0,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0,
+        "ESCOLIOSIS GRAVE (EN C)": 1.0,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-30-Dec-2016-159-C-AP_jpg.rf.68e61a325910fb1327096d34c3af5801.jpg",
+      "true_class_id": 0,
+      "true_class_name": "NO ESCOLIOSIS",
+      "pred_class_id": 1,
+      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "confidence": 1.0,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0,
+        "ESCOLIOSIS GRAVE (EN C)": 1.0,
+        "ESCOLIOSIS SEVERA (EN S)": 0.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-30-Dec-2016-160-A-AP_jpg.rf.940d6545ec75408f0fc1fd8b6e9b9a9b.jpg",
+      "true_class_id": 1,
+      "true_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_id": 2,
+      "pred_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "confidence": 1.0,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0,
+        "ESCOLIOSIS GRAVE (EN C)": 0.0,
+        "ESCOLIOSIS SEVERA (EN S)": 1.0
+      }
+    },
+    {
+      "file_name": "sunhl-1th-30-Dec-2016-161-A-AP_jpg.rf.ea5f4e6f30c6dc49740550cc21819c44.jpg",
+      "true_class_id": 1,
+      "true_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_id": 2,
+      "pred_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "confidence": 1.0,
+      "probabilities": {
+        "NO ESCOLIOSIS": 0.0,
+        "ESCOLIOSIS GRAVE (EN C)": 0.0,
+        "ESCOLIOSIS SEVERA (EN S)": 1.0
+      }
+    }
+  ],
+  "annotation_geometry_reference": {
+    "note": "Reference accuracy of the geometric rule on expert bounding boxes; NOT the deployed CNN model.",
+    "accuracy": 0.8515
+  }
+}

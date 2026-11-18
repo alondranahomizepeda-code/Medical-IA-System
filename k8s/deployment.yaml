@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medical-ai-deployment
+  namespace: medical-system
+  labels:
+    app: medical-ai-app
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: medical-ai-app
+  template:
+    metadata:
+      labels:
+        app: medical-ai-app
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: medical-ai-backend
+          image: ghcr.io/medical-ai/scoliosis-diagnosis-system:1.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: medical-ai-config
+            - secretRef:
+                name: medical-ai-secret
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "2Gi"
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 12
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 2
+          volumeMounts:
+            - name: clinical-data-storage
+              mountPath: /app/data
+            - name: ephemeral-logs
+              mountPath: /app/logs
+            - name: tmp-dir
+              mountPath: /tmp
+      volumes:
+        - name: clinical-data-storage
+          persistentVolumeClaim:
+            claimName: medical-ai-storage-pvc
+        - name: ephemeral-logs
+          emptyDir: {}
+        - name: tmp-dir
+          emptyDir: {}

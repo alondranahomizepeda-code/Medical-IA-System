@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: medical-system
+spec:
+  selector:
+    app: medical-ai-postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: medical-ai-postgres
+  namespace: medical-system
+spec:
+  serviceName: "postgres-service"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: medical-ai-postgres
+  template:
+    metadata:
+      labels:
+        app: medical-ai-postgres
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+        fsGroup: 999
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: medical-ai-secret
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 10Gi

@@ -1,0 +1,9 @@
+[run]
+omit =
+    ai/train_model.py
+    ai/plot_confusion_matrix.py
+    generate_test_samples.py
+    ver_db.py
+    data/*
+    tests/*
+    venv/*

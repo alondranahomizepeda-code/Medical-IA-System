@@ -1,0 +1,68 @@
+{
+  "benchmark_environment": {
+    "iterations": 15,
+    "total_duration_seconds": 4.5,
+    "throughput_requests_per_second": 3.34,
+    "ram_baseline_mb": 470.67,
+    "ram_peak_mb": 496.45,
+    "ram_growth_mb": 25.78
+  },
+  "latency_stages": {
+    "end_to_end": {
+      "mean_ms": 299.74,
+      "median_ms": 258.36,
+      "p95_ms": 478.16,
+      "p99_ms": 678.18,
+      "min_ms": 223.8,
+      "max_ms": 728.18
+    },
+    "preprocessing": {
+      "mean_ms": 90.34,
+      "median_ms": 79.92,
+      "p95_ms": 126.25,
+      "p99_ms": 134.84,
+      "min_ms": 71.06,
+      "max_ms": 136.98
+    },
+    "inference": {
+      "mean_ms": 118.69,
+      "median_ms": 111.76,
+      "p95_ms": 160.82,
+      "p99_ms": 215.52,
+      "min_ms": 91.52,
+      "max_ms": 229.19
+    },
+    "report_generation": {
+      "mean_ms": 66.65,
+      "median_ms": 36.17,
+      "p95_ms": 173.4,
+      "p99_ms": 404.75,
+      "min_ms": 33.57,
+      "max_ms": 462.59
+    },
+    "audit_logging": {
+      "mean_ms": 12.42,
+      "median_ms": 11.84,
+      "p95_ms": 16.05,
+      "p99_ms": 18.11,
+      "min_ms": 10.74,
+      "max_ms": 18.62
+    }
+  },
+  "bottleneck_breakdown": {
+    "preprocessing_pct": 31.36,
+    "inference_pct": 41.2,
+    "report_generation_pct": 23.13,
+    "audit_database_pct": 4.31
+  },
+  "conclusions": {
+    "primary_bottleneck": "Deep Learning Inference (MobileNetV2 CNN forward pass)",
+    "bottleneck_rationale": "Inference accounts for 41.2% of total latency per request.",
+    "optimization_strategies": [
+      "TensorRT / ONNX Runtime quantization (FP32 to INT8/FP16) reducing inference latency by ~3x.",
+      "Batch prediction queue for non-emergency radiograph processing.",
+      "Horizontal Pod Autoscaling (HPA) in Kubernetes scaling pods based on CPU utilization > 70%.",
+      "Asynchronous Celery/Redis background task for PDF report rendering to decouple HTTP response."
+    ]
+  }
+}

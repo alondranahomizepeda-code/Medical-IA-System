@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.env/
+env/
+
+# Runtime data (ignore volatile uploads/caches, but track trained models & evaluation artifacts)
+data/uploads/*
+data/processed/*
+data/reports/*
+data/.keras/
+data/.mplconfig/
+data/.tmp/
+!data/models/**
+!data/confusion_matrix.png
+!data/performance_benchmark_results.json
+logs/*.log
+
+# Database
+*.db
+*.sqlite3
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Agent conversations (privacy — do not share)
+.gemini/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary
+*.tmp
+*.bak
+
+logs/*

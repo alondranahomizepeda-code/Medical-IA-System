@@ -1,0 +1,38 @@
+{
+  "model_name": "scoliosis_classifier",
+  "version": "1.0.0",
+  "base_architecture": "MobileNetV2",
+  "technique": "Transfer Learning (Baseline without Rescaling(2,-1) or class weights)",
+  "input_shape": [
+    224,
+    224,
+    3
+  ],
+  "num_classes": 3,
+  "class_labels": {
+    "0": "NO ESCOLIOSIS",
+    "1": "ESCOLIOSIS GRAVE (EN C)",
+    "2": "ESCOLIOSIS SEVERA (EN S)"
+  },
+  "metrics": {
+    "accuracy": 0.4455,
+    "balanced_accuracy": 0.3333,
+    "precision": 0.1485,
+    "recall": 0.3333,
+    "f1_score": 0.2055
+  },
+  "approved": false,
+  "quality_gate": {
+    "approved": false,
+    "min_macro_f1": 0.7,
+    "min_class_recall": 0.6,
+    "reasons": [
+      "Model collapses to predicting a single class for all test samples.",
+      "Accuracy (44.55%) does not exceed majority-class baseline (44.55%).",
+      "Macro-F1 (20.55%) is below minimum threshold (70.00%).",
+      "Class 'NO ESCOLIOSIS' sensitivity (0.00%) is below minimum (60.00%).",
+      "Class 'ESCOLIOSIS SEVERA (EN S)' sensitivity (0.00%) is below minimum (60.00%)."
+    ]
+  },
+  "saved_at": "2026-11-18T16:49:15.506201"
+}

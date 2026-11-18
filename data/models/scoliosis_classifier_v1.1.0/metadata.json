@@ -1,0 +1,48 @@
+{
+  "model_name": "scoliosis_classifier",
+  "version": "1.1.0",
+  "base_architecture": "MobileNetV2",
+  "technique": "Transfer Learning (MobileNetV2 + Rescaling(2,-1) + Spatial Curvature Head + Class Weights)",
+  "input_shape": [
+    224,
+    224,
+    3
+  ],
+  "input_contract": {
+    "tensor_dtype": "float32",
+    "caller_normalization_range": [
+      0.0,
+      1.0
+    ],
+    "in_model_rescaling_layer": "Rescaling(2.0, offset=-1.0) -> [-1.0, 1.0]"
+  },
+  "num_classes": 3,
+  "class_labels": {
+    "0": "NO ESCOLIOSIS",
+    "1": "ESCOLIOSIS GRAVE (EN C)",
+    "2": "ESCOLIOSIS SEVERA (EN S)"
+  },
+  "class_weights": {
+    "0": 2.2055,
+    "1": 0.5915,
+    "2": 1.1682
+  },
+  "train_samples": 1535,
+  "val_samples": 100,
+  "test_samples": 101,
+  "metrics": {
+    "accuracy": 0.8812,
+    "balanced_accuracy": 0.872,
+    "precision": 0.8923,
+    "recall": 0.872,
+    "f1_score": 0.8807
+  },
+  "approved": true,
+  "quality_gate": {
+    "approved": true,
+    "min_macro_f1": 0.7,
+    "min_class_recall": 0.6,
+    "reasons": []
+  },
+  "saved_at": "2026-11-18T16:57:14.595761+00:00"
+}
