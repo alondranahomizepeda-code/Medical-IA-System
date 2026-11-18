@@ -1178,7 +1178,7 @@
             if (!term) return term;
             if (currentLang === 'en') {
                 if (term.includes('NO ESCOLIOSIS') || term.includes('NO SCOLIOSIS')) return 'NO SCOLIOSIS';
-                if (term.includes('GRAVE') || term.includes('EN C') || term.includes('C-CURVE')) return 'SEVERE SCOLIOSIS (C-CURVE)';
+                if (term.includes('GRAVE') || term.includes('EN C') || term.includes('C-CURVE')) return 'SERIOUS SCOLIOSIS (C-CURVE)';
                 if (term.includes('SEVERA') || term.includes('EN S') || term.includes('S-CURVE')) return 'SEVERE SCOLIOSIS (S-CURVE)';
                 return term;
             } else {
@@ -1760,7 +1760,7 @@
                 const badgeColor = isNormal ? 'var(--success)' : (isSevera ? 'var(--danger)' : '#F59E0B');
 
                 const affectedVert = aiData.affected_vertebrae || (isNormal ? 'None' : 'T7 - T11');
-                const curveType = aiData.curve_type || (isNormal ? 'Normal' : (isSevera ? 'Curvatura en S (Doble)' : 'Curvatura en C (Simple)'));
+                const curveType = aiData.curve_type || (isNormal ? 'Normal' : (isSevera ? 'S-Shaped Curve (Double)' : 'C-Shaped Curve (Simple)'));
 
                 const translatedDiag = translateDiagnosis(aiData.classification);
                 const translatedVert = translateVertebrae(affectedVert);
@@ -1952,7 +1952,7 @@
                 const t = i18n[currentLang];
                 if (data.entries && data.entries.length > 0) {
                     document.querySelector('#table-audit tbody').innerHTML = data.entries.map(a => {
-                        let userDisplay = "Sistema";
+                        let userDisplay = "System";
                         if (a.username) {
                             userDisplay = `${a.username} ${a.user_id ? `[ID: ${a.user_id}]` : ''}`;
                         } else if (a.user_id) {

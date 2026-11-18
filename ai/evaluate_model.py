@@ -113,7 +113,7 @@ def run_evaluation(
             if parts and int(parts[0]) == 0:
                 v_boxes.append(tuple(map(float, parts[1:5])))
         geom_name, _, _ = analyze_spine_curve(v_boxes, spine_class=None)
-        if "NO ESCOLIOSIS" in geom_name:
+        if "NO SCOLIOSIS" in geom_name:
             geom_preds.append(0)
         elif "EN C" in geom_name:
             geom_preds.append(1)

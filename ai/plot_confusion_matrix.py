@@ -91,7 +91,7 @@ def plot_metrics(version: Optional[str] = None, show_gui: bool = False):
     for idx, (m_key, m_label) in enumerate(zip(metrics, metric_names)):
         vals = [
             per_class[k][m_key] * 100
-            for k in ["NO ESCOLIOSIS", "ESCOLIOSIS GRAVE (EN C)", "ESCOLIOSIS SEVERA (EN S)"]
+            for k in ["NO SCOLIOSIS", "SERIOUS SCOLIOSIS (C-CURVE)", "SEVERE SCOLIOSIS (S-CURVE)"]
         ]
         ax_bar.bar(x + (idx - 1.5) * width, vals, width, label=m_label)
 

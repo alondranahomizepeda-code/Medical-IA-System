@@ -81,9 +81,9 @@ CONFIDENCE_THRESHOLD = float(os.getenv("CONFIDENCE_THRESHOLD", "0.60"))
 BATCH_SIZE = 32
 NUM_CLASSES = 3  # Normal, Scoliosis Grave (en C), Scoliosis Severa (en S)
 CLASS_LABELS = {
-    0: "NO ESCOLIOSIS",
-    1: "ESCOLIOSIS GRAVE (EN C)",
-    2: "ESCOLIOSIS SEVERA (EN S)",
+    0: "NO SCOLIOSIS",
+    1: "SERIOUS SCOLIOSIS (C-CURVE)",
+    2: "SEVERE SCOLIOSIS (S-CURVE)",
 }
 TRANSFER_LEARNING_BASE_MODEL = "MobileNetV2"  # Pre-trained on ImageNet
 

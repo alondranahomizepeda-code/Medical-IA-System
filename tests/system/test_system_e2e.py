@@ -52,9 +52,9 @@ class TestSystemEndToEnd:
         class_data = class_resp.json()
         result_id = class_data["prediction_id"]
         assert class_data["classification"] in [
-            "NO ESCOLIOSIS",
-            "ESCOLIOSIS GRAVE (EN C)",
-            "ESCOLIOSIS SEVERA (EN S)",
+            "NO SCOLIOSIS",
+            "SERIOUS SCOLIOSIS (C-CURVE)",
+            "SEVERE SCOLIOSIS (S-CURVE)",
         ]
         assert class_data["confidence_score"] > 0.0
 

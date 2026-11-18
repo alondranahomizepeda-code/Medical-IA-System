@@ -42,7 +42,7 @@ def seeded_prediction(clinical_service: ClinicalResultsService):
     )
     pred = clinical_service.save_prediction(
         image_id=img.id,
-        classification="ESCOLIOSIS GRAVE (EN C)",
+        classification="SERIOUS SCOLIOSIS (C-CURVE)",
         confidence_score=0.88,
         model_name="scoliosis_classifier",
         model_version="1.1.0",

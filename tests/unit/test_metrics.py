@@ -62,7 +62,7 @@ class TestMetricsUnit:
 
         metrics = compute_classification_metrics(y_true, y_pred, y_prob)
         assert metrics["confusion_matrix"] == [[2, 0, 0], [0, 2, 0], [0, 1, 1]]
-        normal_stats = metrics["per_class_metrics"]["NO ESCOLIOSIS"]
+        normal_stats = metrics["per_class_metrics"]["NO SCOLIOSIS"]
         assert normal_stats["recall_sensitivity"] == 1.0
         assert normal_stats["specificity"] == 1.0
 

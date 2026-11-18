@@ -5,9 +5,9 @@ Implements Transfer Learning for spinal radiograph classification and
 vertebral column curvature analysis (RF-05, RF-12, RD-10, RNF-05, NFR-08).
 
 Classes:
-  0: NO ESCOLIOSIS           — Normal aligned spine
-  1: ESCOLIOSIS GRAVE (EN C) — Single C-curve scoliosis
-  2: ESCOLIOSIS SEVERA (EN S)— Double S-curve scoliosis
+  0: NO SCOLIOSIS           — Normal aligned spine
+  1: SERIOUS SCOLIOSIS (C-CURVE) — Single C-curve scoliosis
+  2: SEVERE SCOLIOSIS (S-CURVE)— Double S-curve scoliosis
 
 Key Improvements in Iteration v1.1.0 (Questions 1 & 2):
   1. In-model `Rescaling(2.0, offset=-1.0)` layer replacing raw `preprocess_input`
@@ -58,8 +58,8 @@ def analyze_spine_curve(
     """
     if not vertebrae_boxes or len(vertebrae_boxes) < 4:
         if spine_class == 2:
-            return "NO ESCOLIOSIS", [], "Normal spinal alignment without pathological deviation."
-        return "INDETERMINADO", [], "Insufficient vertebral annotations (<4 boxes) to derive curve class."
+            return "NO SCOLIOSIS", [], "Normal spinal alignment without pathological deviation."
+        return "INDETERMINATE", [], "Insufficient vertebral annotations (<4 boxes) to derive curve class."
 
     # Sort vertebrae from cranial to caudal (top to bottom by y coordinate)
     v_sorted = sorted(vertebrae_boxes, key=lambda v: v[1])
@@ -95,7 +95,7 @@ def analyze_spine_curve(
 
     # Check for normal alignment (calibrated physiological baseline threshold: 0.042)
     if spine_class == 2 or (spine_class is None and max_dev < 0.042):
-        return "NO ESCOLIOSIS", [], "Normal physiological vertebral alignment (no scoliosis)."
+        return "NO SCOLIOSIS", [], "Normal physiological vertebral alignment (no scoliosis)."
 
     # Smooth deviations along spine to reduce noise
     smoothed = np.convolve(deviations, [0.2, 0.6, 0.2], mode="same")
@@ -129,13 +129,13 @@ def analyze_spine_curve(
     aff_str = ", ".join(affected_desc)
 
     if is_s_curve:
-        classification = "ESCOLIOSIS SEVERA (EN S)"
+        classification = "SEVERE SCOLIOSIS (S-CURVE)"
         detail = (
             f"Double S-shaped structural curve. Main apex at vertebra {apex_v}. "
             f"Affected vertebrae: {aff_str}."
         )
     else:
-        classification = "ESCOLIOSIS GRAVE (EN C)"
+        classification = "SERIOUS SCOLIOSIS (C-CURVE)"
         curve_side = "right" if deviations[apex_idx] > 0 else "left"
         detail = (
             f"Single C-shaped curve with convexity to the {curve_side}. "
@@ -236,7 +236,7 @@ def estimate_vertebrae_from_image(image_array: np.ndarray) -> Dict[str, Any]:
         logger.warning(f"Error in automatic vertebral curvature estimation: {e}")
         return {
             "affected_vertebrae": "Not determined",
-            "curve_type": "Indeterminado",
+            "curve_type": "Indeterminate",
             "curve_detail": "Geometric vertebral estimation could not be completed.",
             "apex_vertebra": "N/A",
             "max_deviation": 0.0,
@@ -400,10 +400,10 @@ class TransferLearningTrainer:
                         sp_cls = c
 
                 cls_name, _, _ = analyze_spine_curve(v_boxes, sp_cls)
-                if cls_name == "INDETERMINADO":
+                if cls_name == "INDETERMINATE":
                     skipped_indet += 1
                     continue
-                elif "NO ESCOLIOSIS" in cls_name:
+                elif "NO SCOLIOSIS" in cls_name:
                     cls_idx = 0
                 elif "EN C" in cls_name:
                     cls_idx = 1

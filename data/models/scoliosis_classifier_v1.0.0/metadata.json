@@ -10,9 +10,9 @@
   ],
   "num_classes": 3,
   "class_labels": {
-    "0": "NO ESCOLIOSIS",
-    "1": "ESCOLIOSIS GRAVE (EN C)",
-    "2": "ESCOLIOSIS SEVERA (EN S)"
+    "0": "NO SCOLIOSIS",
+    "1": "SERIOUS SCOLIOSIS (C-CURVE)",
+    "2": "SEVERE SCOLIOSIS (S-CURVE)"
   },
   "metrics": {
     "accuracy": 0.4455,
@@ -30,8 +30,8 @@
       "Model collapses to predicting a single class for all test samples.",
       "Accuracy (44.55%) does not exceed majority-class baseline (44.55%).",
       "Macro-F1 (20.55%) is below minimum threshold (70.00%).",
-      "Class 'NO ESCOLIOSIS' sensitivity (0.00%) is below minimum (60.00%).",
-      "Class 'ESCOLIOSIS SEVERA (EN S)' sensitivity (0.00%) is below minimum (60.00%)."
+      "Class 'NO SCOLIOSIS' sensitivity (0.00%) is below minimum (60.00%).",
+      "Class 'SEVERE SCOLIOSIS (S-CURVE)' sensitivity (0.00%) is below minimum (60.00%)."
     ]
   },
   "saved_at": "2026-11-18T16:49:15.506201"

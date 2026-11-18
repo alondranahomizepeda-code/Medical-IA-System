@@ -33,7 +33,7 @@ def compute_majority_baseline(y_true: np.ndarray) -> Dict[str, Any]:
     if len(y_true) == 0:
         return {
             "class_id": 1,
-            "class": CLASS_LABELS.get(1, "ESCOLIOSIS GRAVE (EN C)"),
+            "class": CLASS_LABELS.get(1, "SERIOUS SCOLIOSIS (C-CURVE)"),
             "accuracy": 0.0,
             "balanced_accuracy": 0.0,
             "f1_score": 0.0,

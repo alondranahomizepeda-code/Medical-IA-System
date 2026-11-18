@@ -22,7 +22,7 @@ from services.inference_decorators import (
 class MockModelInferencer(IModelInferencer):
     """Mock inferencer implementing domain contract without loading heavy neural network."""
 
-    def __init__(self, fixed_class: str = "NO ESCOLIOSIS", fixed_confidence: float = 0.95):
+    def __init__(self, fixed_class: str = "NO SCOLIOSIS", fixed_confidence: float = 0.95):
         self.fixed_class = fixed_class
         self.fixed_confidence = fixed_confidence
 
@@ -31,9 +31,9 @@ class MockModelInferencer(IModelInferencer):
             "classification": self.fixed_class,
             "confidence_score": self.fixed_confidence,
             "class_probabilities": {
-                "NO ESCOLIOSIS": 0.95,
-                "ESCOLIOSIS GRAVE (EN C)": 0.03,
-                "ESCOLIOSIS SEVERA (EN S)": 0.02,
+                "NO SCOLIOSIS": 0.95,
+                "SERIOUS SCOLIOSIS (C-CURVE)": 0.03,
+                "SEVERE SCOLIOSIS (S-CURVE)": 0.02,
             },
             "model_name": "mock_scoliosis_classifier",
             "model_version": "1.1.0",
@@ -58,7 +58,7 @@ class TestInferenceDecoratorsUnit:
         dummy_input = np.zeros((224, 224, 3), dtype=np.float32)
         result1 = metrics_inferencer.predict(dummy_input)
 
-        assert result1["classification"] == "NO ESCOLIOSIS"
+        assert result1["classification"] == "NO SCOLIOSIS"
         assert "metrics" in result1
         assert result1["metrics"]["inference_count"] == 1
         assert result1["metrics"]["total_processing_time_ms"] >= 0.0
@@ -69,29 +69,29 @@ class TestInferenceDecoratorsUnit:
         summary = metrics_inferencer.get_metrics_summary()
         assert summary["total_inferences"] == 3
         assert summary["average_latency_ms"] >= 0.0
-        assert summary["classification_distribution"]["NO ESCOLIOSIS"] == 3
+        assert summary["classification_distribution"]["NO SCOLIOSIS"] == 3
 
     def test_logging_decorator_execution(self):
         """Verify LoggingInferencerDecorator adds logged_at timestamp without modifying predictions."""
-        base_inferencer = MockModelInferencer(fixed_class="ESCOLIOSIS GRAVE (EN C)", fixed_confidence=0.88)
+        base_inferencer = MockModelInferencer(fixed_class="SERIOUS SCOLIOSIS (C-CURVE)", fixed_confidence=0.88)
         logged_inferencer = LoggingInferencerDecorator(base_inferencer)
 
         dummy_input = np.zeros((224, 224, 3), dtype=np.float32)
         result = logged_inferencer.predict(dummy_input)
 
-        assert result["classification"] == "ESCOLIOSIS GRAVE (EN C)"
+        assert result["classification"] == "SERIOUS SCOLIOSIS (C-CURVE)"
         assert result["confidence_score"] == 0.88
         assert "logged_at" in result
 
     def test_stacked_decorators_pipeline(self):
         """Verify stacking Logging -> Metrics -> BaseInferencer honours LSP."""
-        base = MockModelInferencer(fixed_class="ESCOLIOSIS SEVERA (EN S)", fixed_confidence=0.91)
+        base = MockModelInferencer(fixed_class="SEVERE SCOLIOSIS (S-CURVE)", fixed_confidence=0.91)
         stacked = LoggingInferencerDecorator(MetricsInferencerDecorator(base))
 
         dummy_input = np.zeros((224, 224, 3), dtype=np.float32)
         result = stacked.predict(dummy_input)
 
-        assert result["classification"] == "ESCOLIOSIS SEVERA (EN S)"
+        assert result["classification"] == "SEVERE SCOLIOSIS (S-CURVE)"
         assert "metrics" in result
         assert "logged_at" in result
 

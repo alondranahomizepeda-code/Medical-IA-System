@@ -5,9 +5,9 @@ Encapsulates interchangeable classification algorithms behind a common interface
 
 ScoliosisStrategy implements IMLStrategy for spinal radiographs:
   - 3-class CNN classification (MobileNetV2 Transfer Learning):
-      0: NO ESCOLIOSIS
-      1: ESCOLIOSIS GRAVE (EN C)
-      2: ESCOLIOSIS SEVERA (EN S)
+      0: NO SCOLIOSIS
+      1: SERIOUS SCOLIOSIS (C-CURVE)
+      2: SEVERE SCOLIOSIS (S-CURVE)
   - Compiled @tf.function forward pass for low-latency CPU execution.
   - Geometric vertebral curve tracking (T1-L5) to estimate affected levels
     and raise the mandatory clinical review flag (requires_review) whenever
@@ -114,7 +114,7 @@ class ScoliosisStrategy(IMLStrategy):
 
         predicted_class = int(np.argmax(probabilities))
         confidence_score = float(probabilities[predicted_class])
-        classification = CLASS_LABELS.get(predicted_class, "NO ESCOLIOSIS")
+        classification = CLASS_LABELS.get(predicted_class, "NO SCOLIOSIS")
 
         # Step 2: Geometric vertebral curve estimation from pixels (never overrides CNN diagnosis)
         geometry_source = original_image if original_image is not None else tensor[0]
@@ -128,7 +128,7 @@ class ScoliosisStrategy(IMLStrategy):
         else:
             geometry_class = 1
 
-        geometry_agrees = (geom_curve_type != "Indeterminado") and (geometry_class == predicted_class)
+        geometry_agrees = (geom_curve_type != "Indeterminate") and (geometry_class == predicted_class)
         low_confidence = confidence_score < CONFIDENCE_THRESHOLD
         requires_review = bool(low_confidence or not geometry_agrees)
 

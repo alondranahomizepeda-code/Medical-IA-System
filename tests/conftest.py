@@ -83,7 +83,7 @@ def setup_test_db():
     database and storage directories remain spotless.
     """
     init_database()
-    from config.settings import UPLOADS_DIR, REPORTS_DIR
+    from config.settings import UPLOAD_DIR as UPLOADS_DIR, REPORTS_DIR
     from infrastructure.database import (
         session_scope,
         UserDB,

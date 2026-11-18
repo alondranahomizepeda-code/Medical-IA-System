@@ -36,13 +36,13 @@
   "predicts_single_class": true,
   "majority_class_baseline": {
     "class_id": 1,
-    "class": "ESCOLIOSIS GRAVE (EN C)",
+    "class": "SERIOUS SCOLIOSIS (C-CURVE)",
     "accuracy": 0.4455,
     "balanced_accuracy": 0.3333,
     "f1_score": 0.2055
   },
   "per_class_metrics": {
-    "NO ESCOLIOSIS": {
+    "NO SCOLIOSIS": {
       "precision": 0.0,
       "recall_sensitivity": 0.0,
       "specificity": 1.0,
@@ -53,7 +53,7 @@
       "fp": 0,
       "tn": 68
     },
-    "ESCOLIOSIS GRAVE (EN C)": {
+    "SERIOUS SCOLIOSIS (C-CURVE)": {
       "precision": 0.4455,
       "recall_sensitivity": 1.0,
       "specificity": 0.0,
@@ -64,7 +64,7 @@
       "fp": 56,
       "tn": 0
     },
-    "ESCOLIOSIS SEVERA (EN S)": {
+    "SEVERE SCOLIOSIS (S-CURVE)": {
       "precision": 0.0,
       "recall_sensitivity": 0.0,
       "specificity": 1.0,
@@ -119,13 +119,13 @@
       "Model collapses to predicting a single class for all test samples.",
       "Accuracy (44.55%) does not exceed majority-class baseline (44.55%).",
       "Macro-F1 (20.55%) is below minimum threshold (70.00%).",
-      "Class 'NO ESCOLIOSIS' sensitivity (0.00%) is below minimum (60.00%).",
-      "Class 'ESCOLIOSIS SEVERA (EN S)' sensitivity (0.00%) is below minimum (60.00%)."
+      "Class 'NO SCOLIOSIS' sensitivity (0.00%) is below minimum (60.00%).",
+      "Class 'SEVERE SCOLIOSIS (S-CURVE)' sensitivity (0.00%) is below minimum (60.00%)."
     ]
   },
   "error_breakdown": {
-    "ESCOLIOSIS SEVERA (EN S) -> ESCOLIOSIS GRAVE (EN C)": 23,
-    "NO ESCOLIOSIS -> ESCOLIOSIS GRAVE (EN C)": 33
+    "SEVERE SCOLIOSIS (S-CURVE) -> SERIOUS SCOLIOSIS (C-CURVE)": 23,
+    "NO SCOLIOSIS -> SERIOUS SCOLIOSIS (C-CURVE)": 33
   },
   "total_errors": 56,
   "error_rate": 0.5545,
@@ -133,729 +133,729 @@
     {
       "file_name": "01-July-2019-1_jpg.rf.a39bf99b90e14970b497076c97236a1a.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7763,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7763,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2154
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7763,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2154
       }
     },
     {
       "file_name": "01-July-2019-25_jpg.rf.833a16bafc1a99ac9cb58aa8bac099cb.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7676,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7676,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2242
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7676,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2242
       }
     },
     {
       "file_name": "01-July-2019-37_jpg.rf.34338537c16b0de619813b75f780f926.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7743,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7743,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2174
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7743,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2174
       }
     },
     {
       "file_name": "01-July-2019-55_jpg.rf.e61497280d2f16e08c48d203b2544ff4.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7811,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7811,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2107
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7811,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2107
       }
     },
     {
       "file_name": "01-July-2019-59_jpg.rf.d4ba4d9f5e695e8dce86754f4b4a665d.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7655,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7655,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2262
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7655,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2262
       }
     },
     {
       "file_name": "01-July-2019-68_jpg.rf.59cdc4e9aa00ce0ef600c2810ae3186a.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7627,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7627,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2289
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7627,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2289
       }
     },
     {
       "file_name": "01-July-2019-75_jpg.rf.553dd588aa79f1087b84519a42bdf05f.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7709,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7709,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2207
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7709,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2207
       }
     },
     {
       "file_name": "01-July-2019-7_jpg.rf.24d006553f96dbfff143340f4baf7847.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7766,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0086,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7766,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2147
+        "NO SCOLIOSIS": 0.0086,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7766,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2147
       }
     },
     {
       "file_name": "01-July-2019-84_jpg.rf.3a0adc2da36addf7812f806de74715c7.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7681,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7681,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2237
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7681,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2237
       }
     },
     {
       "file_name": "Alya_Doga_Senlik_2019_84_IMG_4097_jpg.rf.a76832d4b9ad94b9a03b0802456b1214.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7903,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7903,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2015
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7903,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2015
       }
     },
     {
       "file_name": "Enes_Yilmaz_2019_65_PHOTO-2019-10-15-10-05-23_jpg.rf.b5d873f454fbdd859d11a166b952f7ba.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7806,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0081,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7806,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2114
+        "NO SCOLIOSIS": 0.0081,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7806,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2114
       }
     },
     {
       "file_name": "Ezginur_Aydemir_2019_81_1_png.rf.58c29cc7390b850a67f1011eb042df8e.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7748,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7748,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2168
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7748,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2168
       }
     },
     {
       "file_name": "Hasibe_Ceylin_Ozturk_2019_50_Untitled-2-copy-JPGJJ_JPG.rf.084a0e55eca4236089099913b21cda3d.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7784,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7784,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2134
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7784,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2134
       }
     },
     {
       "file_name": "Mert_Unal_2019_05_IMG_1196_jpg.rf.ef5a92c0c65850626d9214cfd562539c.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7815,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7815,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2103
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7815,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2103
       }
     },
     {
       "file_name": "N1-N-40-M_1_0-Copy_jpg.rf.044ceccbb0b066aa81d2e055105083ea.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7754,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7754,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2163
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7754,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2163
       }
     },
     {
       "file_name": "N13-N-F-15_1_0-Copy_jpg.rf.dd3dfddbca9179a263232b7c475d2eb4.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7771,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7771,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2145
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7771,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2145
       }
     },
     {
       "file_name": "N18-N-F-13_1_0-Copy_jpg.rf.32f3a96d6c34ef1f581a32f710406ebd.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7805,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7805,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2111
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7805,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2111
       }
     },
     {
       "file_name": "N2-N-18-M_1_0-Copy_jpg.rf.9c895b28297e54cf89d150fbfb6969fa.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7766,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7766,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2148
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7766,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2148
       }
     },
     {
       "file_name": "N20-N-F-21_1_0-Copy_jpg.rf.987abd3b6d1cfa33959e0a9e6994ccb8.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7797,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7797,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2118
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7797,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2118
       }
     },
     {
       "file_name": "N21-N-F-17_1_0-Copy_jpg.rf.bc620041bb5778d40b3c865f2349f0a5.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7793,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7793,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2122
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7793,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2122
       }
     },
     {
       "file_name": "N21-N-F-17_1_0-Copy_jpg.rf.f75f3199cd819eaacd5115e71cfa87ef.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7793,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7793,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2122
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7793,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2122
       }
     },
     {
       "file_name": "N23-N-M-13_1_0-Copy_jpg.rf.3089b5e342567ff33c7b9fe7359feb7d.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7812,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7812,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2105
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7812,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2105
       }
     },
     {
       "file_name": "N24-N-M-12_1_0-Copy_jpg.rf.1ac8655c88a0f3387ee3454c74b92880.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7821,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7821,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2096
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7821,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2096
       }
     },
     {
       "file_name": "N31-N-F-12-KA00594212_1_0-Copy_jpg.rf.5286179a84f13ea8076dc06e204fdde3.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7788,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7788,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2128
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7788,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2128
       }
     },
     {
       "file_name": "N35-N-F-5_1_0-Copy_jpg.rf.000f78dcf0fe6502a058104754e7755d.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7826,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7826,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2091
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7826,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2091
       }
     },
     {
       "file_name": "N36-N-M-23_1_0-Copy_jpg.rf.a8ec895001e534c401ed3f2c779c543d.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7768,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7768,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2148
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7768,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2148
       }
     },
     {
       "file_name": "N37-N-M-15_1_0-Copy_jpg.rf.179bbdfd0ce5dff9cdd3290cb69b22d1.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7799,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7799,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2118
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7799,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2118
       }
     },
     {
       "file_name": "N37-N-M-15_1_0-Copy_jpg.rf.6d9c9bb67aed5a9544a0c1e9dbb27aa4.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7799,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7799,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2118
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7799,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2118
       }
     },
     {
       "file_name": "N39-N-M-5_1_2-Copy_jpg.rf.1da01d508c02d295dfb499c963cba44f.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7826,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7826,
-        "ESCOLIOSIS SEVERA (EN S)": 0.209
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7826,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.209
       }
     },
     {
       "file_name": "N43-N-F-24_1_0-Copy_jpg.rf.e97fde121559a476d6b2c9cf9ecf5164.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.787,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.787,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2048
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.787,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2048
       }
     },
     {
       "file_name": "N44-N-M-8_1_0-Copy_jpg.rf.71bb9a6ed21aff229c50ba7f6f207662.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7831,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7831,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2086
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7831,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2086
       }
     },
     {
       "file_name": "N49-N-F-50_1_0-Copy_jpg.rf.9e955008bc7fef07c1cf0df94e2cae1d.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7764,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7764,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2153
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7764,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2153
       }
     },
     {
       "file_name": "N51-N-19-F_1_0-Copy_jpg.rf.273bbf804d46881adaed34d26c194cab.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7813,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7813,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2103
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7813,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2103
       }
     },
     {
       "file_name": "N52-N-47-F_1_0-Copy_jpg.rf.c11fa357b3948f7c7266a18d7eb43324.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7773,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7773,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2144
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7773,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2144
       }
     },
     {
       "file_name": "N55-N-33-F_1_0-Copy_jpg.rf.0459130eaa445a016f021d1b82463a6f.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7774,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7774,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2143
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7774,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2143
       }
     },
     {
       "file_name": "N58-N-43-M_1_0-Copy_jpg.rf.b2692528ed5dc730c511183dd6290aad.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.78,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.78,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2116
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.78,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2116
       }
     },
     {
       "file_name": "N59-N-34M-F_1_0-Copy_jpg.rf.58a1d330d2a5c71e0238861debf694ec.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7831,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0085,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7831,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2084
+        "NO SCOLIOSIS": 0.0085,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7831,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2084
       }
     },
     {
       "file_name": "N6-N-17-M_1_0-Copy_jpg.rf.540fe29afae4e22d08ef8dbff5945271.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.783,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.783,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2087
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.783,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2087
       }
     },
     {
       "file_name": "N65-N-10-F_1_0-Copy_jpg.rf.98147e8b6fbe051b678ca5891bee3c3d.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7811,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7811,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2104
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7811,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2104
       }
     },
     {
       "file_name": "N67-N-21-F_1_0-Copy_jpg.rf.21a621327cc9a43e27bcffd249b6e81b.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7806,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7806,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2111
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7806,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2111
       }
     },
     {
       "file_name": "N67-N-21-F_1_0-Copy_jpg.rf.5de13e365bf40569fe39ac5b713ae1f4.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7806,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7806,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2111
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7806,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2111
       }
     },
     {
       "file_name": "N7-N-M-8_1_0-Copy_jpg.rf.fec89ca185a57dda30b612cd5490165f.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7774,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0081,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7774,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2144
+        "NO SCOLIOSIS": 0.0081,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7774,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2144
       }
     },
     {
       "file_name": "N9-N-F-13_1_0-Copy_jpg.rf.8d4dad13e3006ffbc1b1f603ddc5d32c.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7794,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7794,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2123
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7794,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2123
       }
     },
     {
       "file_name": "Yasemin_Nergiz_new-xray_jpg.rf.6c65ac21cda2e321cff5ebd52df9ae2e.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7733,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7733,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2184
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7733,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2184
       }
     },
     {
       "file_name": "sunhl-1th-26-Jul-2016-77-C-AP_jpg.rf.59c23cf3cff287ee1c1014a585639f1b.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7804,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7804,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2114
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7804,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2114
       }
     },
     {
       "file_name": "sunhl-1th-26-Jul-2016-77-D-AP_jpg.rf.f0952d8f331155edfc9579c6a0e97e27.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7781,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7781,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2138
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7781,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2138
       }
     },
     {
       "file_name": "sunhl-1th-26-Jul-2016-90-B-AP_jpg.rf.1615e5b1acb54001f071aff31b6562c4.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7776,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0084,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7776,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2139
+        "NO SCOLIOSIS": 0.0084,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7776,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2139
       }
     },
     {
       "file_name": "sunhl-1th-28-Feb-2017-240-A-AP_jpg.rf.861f0334d3a026e1400bfc0dd35d7bb6.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7739,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7739,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2179
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7739,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2179
       }
     },
     {
       "file_name": "sunhl-1th-28-Feb-2017-291-M-AP_jpg.rf.7a006e3113cc89830e5a271766982a26.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7819,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7819,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2099
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7819,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2099
       }
     },
     {
       "file_name": "sunhl-1th-28-Feb-2017-291-O-AP_jpg.rf.4bbd838dca098dfd0b86d3488ccb4964.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7783,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7783,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2134
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7783,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2134
       }
     },
     {
       "file_name": "sunhl-1th-28-Feb-2017-294-B-AP_jpg.rf.87ab9d962b6651cf88353afab739b95f.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7797,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0081,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7797,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2122
+        "NO SCOLIOSIS": 0.0081,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7797,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2122
       }
     },
     {
       "file_name": "sunhl-1th-28-Feb-2017-295-F-AP_jpg.rf.2bc79d6132b9e0ff2d405ee640991d2a.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7769,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0081,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7769,
-        "ESCOLIOSIS SEVERA (EN S)": 0.215
+        "NO SCOLIOSIS": 0.0081,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7769,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.215
       }
     },
     {
       "file_name": "sunhl-1th-28-Feb-2017-295-H-AP_jpg.rf.e51943e172ed2cc7566035137b789ac0.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7758,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0083,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7758,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2158
+        "NO SCOLIOSIS": 0.0083,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7758,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2158
       }
     },
     {
       "file_name": "sunhl-1th-28-Feb-2017-310-B-AP_jpg.rf.6b40d763c14c24d49b69cfe47f0de8d4.jpg",
       "true_class_id": 2,
-      "true_class_name": "ESCOLIOSIS SEVERA (EN S)",
+      "true_class_name": "SEVERE SCOLIOSIS (S-CURVE)",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7763,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0082,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7763,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2156
+        "NO SCOLIOSIS": 0.0082,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7763,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2156
       }
     },
     {
       "file_name": "sunhl-1th-30-Dec-2016-159-B-AP_jpg.rf.d7b47e6d995753c9615541128bd4472d.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7822,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.008,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7822,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2098
+        "NO SCOLIOSIS": 0.008,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7822,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2098
       }
     },
     {
       "file_name": "sunhl-1th-30-Dec-2016-159-C-AP_jpg.rf.68e61a325910fb1327096d34c3af5801.jpg",
       "true_class_id": 0,
-      "true_class_name": "NO ESCOLIOSIS",
+      "true_class_name": "NO SCOLIOSIS",
       "pred_class_id": 1,
-      "pred_class_name": "ESCOLIOSIS GRAVE (EN C)",
+      "pred_class_name": "SERIOUS SCOLIOSIS (C-CURVE)",
       "confidence": 0.7878,
       "probabilities": {
-        "NO ESCOLIOSIS": 0.0078,
-        "ESCOLIOSIS GRAVE (EN C)": 0.7878,
-        "ESCOLIOSIS SEVERA (EN S)": 0.2044
+        "NO SCOLIOSIS": 0.0078,
+        "SERIOUS SCOLIOSIS (C-CURVE)": 0.7878,
+        "SEVERE SCOLIOSIS (S-CURVE)": 0.2044
       }
     }
   ],

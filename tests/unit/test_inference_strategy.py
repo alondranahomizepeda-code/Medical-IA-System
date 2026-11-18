@@ -39,7 +39,7 @@ class DummyControlledStrategy(IMLStrategy):
     def classify(self, preprocessed_image, filename: str = "", original_image=None) -> Dict:
         pred_cls = int(np.argmax(self._probs))
         conf = float(self._probs[pred_cls])
-        labels = {0: "NO ESCOLIOSIS", 1: "ESCOLIOSIS GRAVE (EN C)", 2: "ESCOLIOSIS SEVERA (EN S)"}
+        labels = {0: "NO SCOLIOSIS", 1: "SERIOUS SCOLIOSIS (C-CURVE)", 2: "SEVERE SCOLIOSIS (S-CURVE)"}
         return {
             "classification": labels[pred_cls],
             "confidence_score": round(conf, 4),
@@ -74,7 +74,7 @@ class TestInferenceStrategyUnit:
 
         probs = result["all_probabilities"]
         assert abs(sum(probs.values()) - 1.0) < 1e-3
-        assert result["classification"] == "ESCOLIOSIS GRAVE (EN C)"
+        assert result["classification"] == "SERIOUS SCOLIOSIS (C-CURVE)"
         assert abs(result["confidence_score"] - 0.75) < 1e-4
 
     def test_filename_cannot_change_the_diagnosis(self):
@@ -90,7 +90,7 @@ class TestInferenceStrategyUnit:
         res_normal_name = strategy.classify(tensor, filename="paciente_normal_no_escoliosis_1.jpg")
         res_c_name = strategy.classify(tensor, filename="paciente_escoliosis_grave_en_c_1.jpg")
 
-        assert res_normal_name["classification"] == res_c_name["classification"] == "ESCOLIOSIS SEVERA (EN S)"
+        assert res_normal_name["classification"] == res_c_name["classification"] == "SEVERE SCOLIOSIS (S-CURVE)"
         assert res_normal_name["all_probabilities"] == res_c_name["all_probabilities"]
 
     def test_requires_review_flag_on_low_confidence_question_9(self):
@@ -124,7 +124,7 @@ class TestInferenceStrategyUnit:
         tensor = (straight_spine.astype(np.float32) / 255.0)[None, ...]
 
         res = strategy.classify(tensor, original_image=straight_spine)
-        assert res["classification"] == "ESCOLIOSIS SEVERA (EN S)"
+        assert res["classification"] == "SEVERE SCOLIOSIS (S-CURVE)"
         assert res["geometry_agrees"] is False
         assert res["requires_review"] is True
 
@@ -185,7 +185,7 @@ class TestInferenceStrategyUnit:
         assert load_res["status"] == "loaded"
 
         out = svc.classify(np.zeros((1, 224, 224, 3), dtype=np.float32), image_id=99, user_id=1)
-        assert out["classification"] == "ESCOLIOSIS SEVERA (EN S)"
+        assert out["classification"] == "SEVERE SCOLIOSIS (S-CURVE)"
         assert out["confidence_score"] == 0.85
 
     def test_alternative_backbone_strategy_metadata(self):

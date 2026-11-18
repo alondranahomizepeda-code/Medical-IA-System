@@ -57,7 +57,7 @@ def generate_samples():
                 sp_cls = c
 
         cls_name, aff_list, detail = analyze_spine_curve(v_boxes, sp_cls)
-        if "NO ESCOLIOSIS" in cls_name and len(found["normal"]) < 3:
+        if "NO SCOLIOSIS" in cls_name and len(found["normal"]) < 3:
             found["normal"].append((img_path, aff_list, detail))
         elif "EN C" in cls_name and len(found["c_curve"]) < 3:
             found["c_curve"].append((img_path, aff_list, detail))

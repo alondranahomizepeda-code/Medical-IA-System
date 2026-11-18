@@ -20,39 +20,39 @@ class TestAIPipelineUnit:
     """Unit tests for the AI Transfer Learning and vertebral geometry functions."""
 
     def test_analyze_spine_curve_normal_alignment(self):
-        """Straight vertical column of vertebrae must be classified as NO ESCOLIOSIS."""
+        """Straight vertical column of vertebrae must be classified as NO SCOLIOSIS."""
         boxes = [(0.50, 0.10 + i * 0.05, 0.06, 0.04) for i in range(15)]
         cls_name, affected, detail = analyze_spine_curve(boxes, spine_class=None)
-        assert cls_name == "NO ESCOLIOSIS"
+        assert cls_name == "NO SCOLIOSIS"
         assert affected == []
 
     def test_analyze_spine_curve_single_c_curve(self):
-        """Single lateral arc must be classified as ESCOLIOSIS GRAVE (EN C)."""
+        """Single lateral arc must be classified as SERIOUS SCOLIOSIS (C-CURVE)."""
         boxes = []
         for i in range(15):
             y = 0.10 + i * 0.05
             x = 0.50 + 0.12 * np.sin(np.pi * i / 14.0)
             boxes.append((float(x), float(y), 0.06, 0.04))
         cls_name, affected, detail = analyze_spine_curve(boxes, spine_class=None)
-        assert cls_name == "ESCOLIOSIS GRAVE (EN C)"
+        assert cls_name == "SERIOUS SCOLIOSIS (C-CURVE)"
         assert len(affected) >= 1
 
     def test_analyze_spine_curve_double_s_curve(self):
-        """Two opposite lateral arcs must be classified as ESCOLIOSIS SEVERA (EN S)."""
+        """Two opposite lateral arcs must be classified as SEVERE SCOLIOSIS (S-CURVE)."""
         boxes = []
         for i in range(16):
             y = 0.10 + i * 0.05
             x = 0.50 + 0.09 * np.sin(2.0 * np.pi * i / 15.0)
             boxes.append((float(x), float(y), 0.06, 0.04))
         cls_name, affected, detail = analyze_spine_curve(boxes, spine_class=None)
-        assert cls_name == "ESCOLIOSIS SEVERA (EN S)"
+        assert cls_name == "SEVERE SCOLIOSIS (S-CURVE)"
         assert len(affected) >= 1
 
     def test_analyze_spine_curve_indeterminate_under_four_boxes(self):
-        """Fewer than 4 annotated vertebrae without normal token must return INDETERMINADO."""
+        """Fewer than 4 annotated vertebrae without normal token must return INDETERMINATE."""
         boxes = [(0.50, 0.20, 0.05, 0.04), (0.51, 0.30, 0.05, 0.04)]
         cls_name, affected, _ = analyze_spine_curve(boxes, spine_class=None)
-        assert cls_name == "INDETERMINADO"
+        assert cls_name == "INDETERMINATE"
 
     def test_compute_balanced_class_weights_inverse_frequency(self):
         """Verify class weights follow w_k = n / (K * n_k) to counter C-curve dominance."""

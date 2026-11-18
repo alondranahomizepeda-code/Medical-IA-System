@@ -213,7 +213,7 @@ class ClinicalResultsService:
             def get_localized_classification() -> str:
                 cls_raw = result.classification or ""
                 upper_cls = cls_raw.upper()
-                if "NO ESCOLIOSIS" in upper_cls or "NO SCOLIOSIS" in upper_cls or "NORMAL" in upper_cls:
+                if "NO SCOLIOSIS" in upper_cls or "NO SCOLIOSIS" in upper_cls or "NORMAL" in upper_cls:
                     return "NORMAL (SIN ESCOLIOSIS)" if is_es else "NORMAL (NO SCOLIOSIS)"
                 elif "EN C" in upper_cls or "C-CURVE" in upper_cls:
                     return "ESCOLIOSIS GRAVE (CURVA EN C)" if is_es else "SEVERE SCOLIOSIS (C-SHAPED CURVE)"

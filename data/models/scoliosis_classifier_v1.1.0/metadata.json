@@ -18,9 +18,9 @@
   },
   "num_classes": 3,
   "class_labels": {
-    "0": "NO ESCOLIOSIS",
-    "1": "ESCOLIOSIS GRAVE (EN C)",
-    "2": "ESCOLIOSIS SEVERA (EN S)"
+    "0": "NO SCOLIOSIS",
+    "1": "SERIOUS SCOLIOSIS (C-CURVE)",
+    "2": "SEVERE SCOLIOSIS (S-CURVE)"
   },
   "class_weights": {
     "0": 2.2055,
