@@ -1,4 +1,4 @@
-# Scoliosis AI Diagnostic System
+﻿# Scoliosis AI Diagnostic System
 
 [![CI/CD Pipeline](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions)
 [![Python Version](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
@@ -16,9 +16,9 @@ Intelligent clinical decision support system (CDSS) for scoliosis detection, spi
 ## Key Features
 
 - **Multi-Class Pathological Classification:**
-  1. `NO ESCOLIOSIS` (Normal): physiologically aligned spine.
-  2. `ESCOLIOSIS GRAVE (EN C)`: single structural curvature with identified apex.
-  3. `ESCOLIOSIS SEVERA (EN S)`: double structural curvature with thoracic and lumbar inflection points.
+  1. `NO SCOLIOSIS` (Normal): physiologically aligned spine.
+  2. `SERIOUS SCOLIOSIS (C-CURVE)`: single structural curvature with identified apex.
+  3. `SEVERE SCOLIOSIS (S-CURVE)`: double structural curvature with thoracic and lumbar inflection points.
 - **Anatomical Vertebral Localization:** automated tracking of spinal landmarks (T1-T12, L1-L5), apex vertebra and affected vertebral range (e.g. `T7 - T11`).
 - **Deep Transfer Learning:** **MobileNetV2** (ImageNet) fine-tuned for spinal radiography, with in-graph `Rescaling(2.0, offset=-1.0)`, a 7x7 spatial curvature head and inverse-frequency class weights.
 - **Human-in-the-Loop Safety:** `requires_review` flag when confidence < 60% or when the CNN and the geometric estimator disagree; radiologists can **Confirm** or **Correct** every result.
@@ -126,3 +126,4 @@ kubectl get pods,hpa -n medical-system
 - **Course:** Software Engineering II
 - **Academic Term:** Fifth Semester, 2026B
 - **Team 3:** Aguilar, Hernandez, Gutierrez, Salinas, Zepeda
+
