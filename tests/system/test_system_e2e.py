@@ -25,7 +25,6 @@ class TestSystemEndToEnd:
             json={"username": "technician", "password": "password123"}
         )
         assert tech_login.status_code == 200
-        tech_token = tech_login.json()["access_token"]
         tech_2fa_code = _2fa_codes["technician"]["code"]
 
         tech_verify = client.post(
@@ -33,6 +32,7 @@ class TestSystemEndToEnd:
             json={"username": "technician", "code": tech_2fa_code}
         )
         assert tech_verify.status_code == 200
+        tech_token = tech_verify.json()["access_token"]
         tech_headers = {"Authorization": f"Bearer {tech_token}"}
 
         # ── Step 2: Technician Uploads Spinal Radiograph ──
@@ -64,7 +64,6 @@ class TestSystemEndToEnd:
             json={"username": "radiologist", "password": "password123"}
         )
         assert rad_login.status_code == 200
-        rad_token = rad_login.json()["access_token"]
         rad_2fa_code = _2fa_codes["radiologist"]["code"]
 
         rad_verify = client.post(
@@ -72,6 +71,7 @@ class TestSystemEndToEnd:
             json={"username": "radiologist", "code": rad_2fa_code}
         )
         assert rad_verify.status_code == 200
+        rad_token = rad_verify.json()["access_token"]
         rad_headers = {"Authorization": f"Bearer {rad_token}"}
 
         # ── Step 6: Radiologist Clinical Review ──
@@ -108,13 +108,13 @@ class TestSystemEndToEnd:
             "/api/v1/auth/login",
             json={"username": "admin", "password": "password123"}
         )
-        admin_token = admin_login.json()["access_token"]
         admin_2fa_code = _2fa_codes["admin"]["code"]
         admin_verify = client.post(
             "/api/v1/auth/verify-2fa",
             json={"username": "admin", "code": admin_2fa_code}
         )
         assert admin_verify.status_code == 200
+        admin_token = admin_verify.json()["access_token"]
         admin_headers = {"Authorization": f"Bearer {admin_token}"}
 
         audit_resp = client.get("/api/v1/audit?limit=50", headers=admin_headers)
