@@ -578,3 +578,14 @@ class TestApiIntegration:
         # Even though the pending OTP row no longer exists in DB, the pre-2FA token MUST still fail with 401
         bypass_attempt = client.get("/api/v1/auth/me", headers=headers)
         assert bypass_attempt.status_code == 401
+
+    def test_descriptive_error_messages_on_405_and_validation(self, client: TestClient):
+        """29. Verify 405 Method Not Allowed and 422 validation errors return clear human explanations."""
+        res_405 = client.get("/api/v1/auth/login")
+        assert res_405.status_code == 405
+        detail_405 = res_405.json()["detail"]
+        assert "not supported" in detail_405.lower() and "/api/v1/auth/login" in detail_405
+
+        res_422 = client.post("/api/v1/auth/login", json={"username": "radiologist"})
+        assert res_422.status_code == 422
+        assert "password" in res_422.json()["detail"].lower()

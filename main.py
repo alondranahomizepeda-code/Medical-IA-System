@@ -25,10 +25,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from fastapi import FastAPI, Request, Response
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.openapi.docs import get_swagger_ui_html
+from starlette.exceptions import HTTPException as StarletteHTTPException
 import uvicorn
 
 from config.settings import (
@@ -198,6 +200,30 @@ def create_application() -> FastAPI:
     app.state.model_registry = model_registry
 
     app.add_middleware(MaxUploadSizeMiddleware)
+
+    @app.exception_handler(StarletteHTTPException)
+    async def friendly_http_exception_handler(request: Request, exc: StarletteHTTPException):
+        """Ensure HTTP errors (e.g., 404, 405 Method Not Allowed) always include a clear human-readable explanation."""
+        detail = exc.detail
+        if exc.status_code == 405:
+            detail = (
+                f"HTTP 405 (Method Not Allowed): The HTTP method '{request.method}' is not supported "
+                f"for '{request.url.path}'. Check the allowed method in /docs."
+            )
+        elif exc.status_code == 404 and detail == "Not Found":
+            detail = f"HTTP 404 (Not Found): The requested resource '{request.url.path}' does not exist."
+        return JSONResponse(status_code=exc.status_code, content={"detail": detail})
+
+    @app.exception_handler(RequestValidationError)
+    async def friendly_validation_exception_handler(request: Request, exc: RequestValidationError):
+        """Convert raw Pydantic validation arrays into clear, user-friendly error explanations."""
+        messages = []
+        for err in exc.errors():
+            loc = " -> ".join(str(part) for part in err.get("loc", []) if part != "body")
+            msg = err.get("msg", "Invalid input")
+            messages.append(f"Field '{loc}': {msg}" if loc else msg)
+        detail = "Input validation error: " + "; ".join(messages)
+        return JSONResponse(status_code=422, content={"detail": detail})
 
     @app.get("/health", include_in_schema=False)
     async def root_health():

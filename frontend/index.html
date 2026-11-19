@@ -1883,7 +1883,7 @@
                 if (res.ok) {
                     fetchResults();
                 } else {
-                    alert("Error: " + (data.detail || JSON.stringify(data)));
+                    alert(translateMessage(data.detail || "Could not submit clinical review."));
                 }
             } catch (error) {
                 alert(i18n[currentLang].errNet);
@@ -1911,7 +1911,7 @@
                 if (res.ok) {
                     fetchResults();
                 } else {
-                    alert("Error: " + (data.detail || JSON.stringify(data)));
+                    alert(translateMessage(data.detail || "Could not submit clinical review."));
                 }
             } catch (error) {
                 alert(i18n[currentLang].errNet);
@@ -1937,7 +1937,7 @@
                     }
                     alert(`${t.pdfSuccess}${data.path}`);
                 } else {
-                    alert("Error: " + JSON.stringify(data));
+                    alert(translateMessage(data.detail || "Could not generate PDF report."));
                 }
             } catch (error) {
                 alert(t.errNet);
