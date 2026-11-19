@@ -9,7 +9,7 @@ All notable changes to the Scoliosis AI Diagnostic System are documented in this
   - Implemented `Codigo/ai/metrics.py` with `compute_majority_baseline`, `compute_calibration_summary`, and `passes_quality_gate` ($\text{Macro-F1} \ge 0.70$, per-class sensitivity $\ge 0.60$, strictly outperforming the $44.55\%$ majority-class baseline).
   - Trained, evaluated, and promoted `scoliosis_classifier v1.1.0` on the 101 held-out test radiographs (`88.12%` accuracy, `87.20%` balanced accuracy, `88.07%` macro-F1, `approved: true`), while preserving `v1.0.0` (`44.55%` accuracy, `33.33%` balanced accuracy, `approved: false`) as historical baseline evidence.
 - **Expanded Automated Test Suite (Criterion 2 — Question 4):**
-  - Expanded the test suite to **103 automated tests** (unit, integration, concurrency, memory profiling, system E2E) achieving **>82% code coverage**.
+  - Expanded the test suite to **104 automated tests** (unit, integration, concurrency, memory profiling, system E2E) achieving **>82% code coverage**.
   - Added `test_critical_medical_non_collapse_and_sensitivity_probe_question_4` to detect mode collapse and verify multi-class responsiveness.
 - **Server-Side Security, 2FA & Strict RBAC (Question 5):**
   - Persisted 6-digit one-time codes (`2FA` and password recovery) as `HMAC-SHA256` digests in the `one_time_codes` table with 5-minute expiration, 5-attempt lockout, and 3-resend limit.
@@ -32,4 +32,4 @@ All notable changes to the Scoliosis AI Diagnostic System are documented in this
 
 ## [3.2.1] - Milestone 4: Ethical, Legal, Social Hardening & Final Consistency
 - Fail-safe hardening: PDF Unicode/long-token sanitizer, compensating disk cleanup on DB failure, query-filter and pagination validation, review-status validation, empty-file rejection, keyboard-mash protection (auto-repeat shield, in-flight lock, maxlength), thread-safe inference (`RLock` + `test_concurrent_inference_thread_safety`), filename truncation.
-- Standardized all clinical class labels to English (`NO SCOLIOSIS`, `SERIOUS SCOLIOSIS (C-CURVE)`, `SEVERE SCOLIOSIS (S-CURVE)`), unified system version to `3.2.1`, removed `k8s/secret.yaml` and runtime DB/patient files from clean distribution packages, and verified full 5-stage CI/CD pass on GitHub Actions (Run #18: https://github.com/alondranahomizepeda-code/Medical-IA-System/actions/runs/44419222602, **103 tests passing**).
+- Standardized all clinical class labels to English (`NO SCOLIOSIS`, `SERIOUS SCOLIOSIS (C-CURVE)`, `SEVERE SCOLIOSIS (S-CURVE)`), unified system version to `3.2.1`, removed `k8s/secret.yaml` and runtime DB/patient files from clean distribution packages, and verified full 5-stage CI/CD pass on GitHub Actions (Run #18: https://github.com/alondranahomizepeda-code/Medical-IA-System/actions/runs/44419222602, **104 tests passing**).

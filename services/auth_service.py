@@ -109,13 +109,19 @@ class AuthService:
 
         return user
 
-    def issue_jwt_for_user(self, user: User, record_audit: bool = True) -> dict:
+    def issue_jwt_for_user(
+        self,
+        user: User,
+        record_audit: bool = True,
+        two_factor_verified: bool = True,
+    ) -> dict:
         """Issue a signed JWT HS256 token for a verified user."""
         token_data = {
             "sub": user.username,
             "user_id": user.id,
             "role": user.role.value,
             "full_name": user.full_name,
+            "two_factor_verified": two_factor_verified,
             "exp": datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
         }
         access_token = jwt.encode(token_data, SECRET_KEY, algorithm=ALGORITHM)

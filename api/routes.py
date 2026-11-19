@@ -138,6 +138,13 @@ def create_router(
         except AuthenticationError as e:
             raise HTTPException(status_code=401, detail=str(e))
 
+        # Reject pre-2FA tokens unconditionally (prevents bypass after 5 failed attempts or OTP expiry)
+        if payload.get("two_factor_verified") is False:
+            raise HTTPException(
+                status_code=401,
+                detail="Two-factor authentication (2FA) verification is incomplete.",
+            )
+
         username = payload.get("sub")
         user_id = payload.get("user_id")
         role_str = payload.get("role", "")
@@ -235,8 +242,10 @@ def create_router(
         """Authenticate credentials and issue a 6-digit 2FA challenge (RF-01)."""
         try:
             user, code = auth_service.initiate_2fa_login(request.username, request.password)
-            # Issue token that remains locked until /auth/verify-2fa consumes the OTP
-            token_bundle = auth_service.issue_jwt_for_user(user, record_audit=False)
+            # Issue a pre-2FA token explicitly marked two_factor_verified=False (unusable on protected routes)
+            token_bundle = auth_service.issue_jwt_for_user(
+                user, record_audit=False, two_factor_verified=False
+            )
             _2fa_codes[request.username] = {"code": code, "attempts": 1}
 
             logger = get_logger("2FA_System")

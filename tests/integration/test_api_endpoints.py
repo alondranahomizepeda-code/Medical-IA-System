@@ -556,3 +556,25 @@ class TestApiIntegration:
         for label, prob_sum in outputs:
             assert label == first_label
             assert abs(prob_sum - 1.0) < 1e-2
+
+    def test_pre_2fa_token_cannot_bypass_after_5_failed_attempts(self, client: TestClient):
+        """28. Security regression: pre-2FA token from /login remains rejected (401) even after 5 wrong OTPs delete the DB challenge."""
+        login_res = client.post(
+            "/api/v1/auth/login",
+            json={"username": "ml_engineer", "password": "password123"},
+        )
+        assert login_res.status_code == 200
+        pre_2fa_token = login_res.json()["access_token"]
+        headers = {"Authorization": f"Bearer {pre_2fa_token}"}
+
+        # Trigger 5 failed 2FA attempts so the OneTimeCodeDB row is locked & deleted
+        for _ in range(5):
+            r = client.post(
+                "/api/v1/auth/verify-2fa",
+                json={"username": "ml_engineer", "code": "000000"},
+            )
+            assert r.status_code == 401
+
+        # Even though the pending OTP row no longer exists in DB, the pre-2FA token MUST still fail with 401
+        bypass_attempt = client.get("/api/v1/auth/me", headers=headers)
+        assert bypass_attempt.status_code == 401

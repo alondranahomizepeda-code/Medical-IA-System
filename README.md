@@ -1,8 +1,8 @@
-﻿# Scoliosis AI Diagnostic System
+# Scoliosis AI Diagnostic System
 
 [![CI/CD Pipeline](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions)
 [![Python Version](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-103%20passed-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-104%20passed-brightgreen.svg)]()
 [![Test Coverage](https://img.shields.io/badge/coverage-%E2%89%A582%25-brightgreen.svg)]()
 [![Model Accuracy](https://img.shields.io/badge/accuracy-88.12%25-success.svg)]()
 [![Version](https://img.shields.io/badge/version-3.2.1-informational.svg)]()
@@ -68,7 +68,7 @@ Artifacts: [`data/confusion_matrix.png`](data/confusion_matrix.png) and [`data/m
 |-- k8s/                          # 12 Kubernetes manifests (kustomize)
 |-- pipeline/                     # Fail-fast preprocessing stages
 |-- services/                     # Auth, image mgmt, inference (Strategy/Decorator), clinical results, audit
-|-- tests/                        # 103 automated tests (unit, integration, concurrency, profiling, system)
+|-- tests/                        # 104 automated tests (unit, integration, concurrency, profiling, system)
 |-- utils/                        # Logging and exception hierarchy
 |-- Dockerfile / docker-compose.yml
 |-- requirements.txt
@@ -97,7 +97,7 @@ Default demo users (password `password123`): `radiologist`, `technician`, `admin
 ### Tests, evaluation and benchmark
 
 ```bash
-pytest -v --cov=. --cov-fail-under=75 tests/      # 103 tests
+pytest -v --cov=. --cov-fail-under=75 tests/      # 104 tests
 python ai/evaluate_model.py                       # recompute metrics on the test split
 python ai/plot_confusion_matrix.py                # confusion matrix chart
 python tests/profiling/benchmark_performance.py   # latency / throughput benchmark
