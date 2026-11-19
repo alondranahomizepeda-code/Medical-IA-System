@@ -32,7 +32,7 @@ FROM python:3.11-slim AS runner
 
 # Metadata labels
 LABEL maintainer="Equipo 3 - Software Engineering II" \
-      version="3.2.0" \
+      version="3.2.1" \
       description="Medical Image Classification System with Transfer Learning & Vertebral Tracking"
 
 WORKDIR /app

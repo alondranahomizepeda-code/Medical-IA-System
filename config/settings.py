@@ -108,4 +108,4 @@ API_DESCRIPTION = (
     "AI-powered clinical decision support system for spinal scoliosis "
     "classification and vertebral curve analysis"
 )
-API_VERSION = "3.2.0"
+API_VERSION = "3.2.1"

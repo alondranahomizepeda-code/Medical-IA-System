@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: medical-ai-system:3.2.0
+    image: medical-ai-system:3.2.1
     container_name: medical_ai_api_container
     restart: unless-stopped
     ports:

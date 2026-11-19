@@ -2,10 +2,10 @@
 
 [![CI/CD Pipeline](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions)
 [![Python Version](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-102%20passed-brightgreen.svg)]()
-[![Test Coverage](https://img.shields.io/badge/coverage-%E2%89%A579%25-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-103%20passed-brightgreen.svg)]()
+[![Test Coverage](https://img.shields.io/badge/coverage-%E2%89%A582%25-brightgreen.svg)]()
 [![Model Accuracy](https://img.shields.io/badge/accuracy-88.12%25-success.svg)]()
-[![Version](https://img.shields.io/badge/version-3.2.0-informational.svg)]()
+[![Version](https://img.shields.io/badge/version-3.2.1-informational.svg)]()
 
 Intelligent clinical decision support system (CDSS) for scoliosis detection, spinal curvature classification, and affected vertebral level localization from coronal spinal radiographs (X-rays). Developed for the **Software Engineering II** course (Team 3).
 
@@ -29,7 +29,7 @@ Intelligent clinical decision support system (CDSS) for scoliosis detection, spi
 - **Fail-Fast Input Validation:** rejects non-radiographic images, color photos, empty/corrupt files, oversized uploads (`HTTP 413`) and unsupported formats (`HTTP 422`); supports JPG, PNG, TIFF and 16-bit DICOM.
 - **Model Registry & Quality Gate:** only approved model versions (macro-F1 >= 0.70, per-class sensitivity >= 0.60) can serve traffic; otherwise `/ready` returns `HTTP 503`.
 - **Bilingual (EN/ES)** web portal and PDF clinical reports, light/dark mode.
-- **DevOps:** 5-stage GitHub Actions pipeline (lint/SAST, tests with coverage gate, Docker build + Trivy, Kubernetes validation, staging deploy), non-root multi-stage `Dockerfile`, and 12 Kubernetes manifests (HPA 2-6 replicas, PDB, PostgreSQL, Ingress).
+- **DevOps:** 5-stage GitHub Actions pipeline (lint/SAST, tests with coverage gate, Docker build + Trivy, Kubernetes validation, staging deploy — verified passing at [Run #18](https://github.com/alondranahomizepeda-code/Medical-IA-System/actions/runs/44419222602)), non-root multi-stage `Dockerfile`, and 10 declarative Kubernetes manifests (HPA 2-6 replicas, PDB, PostgreSQL, Ingress).
 
 ---
 
@@ -68,7 +68,7 @@ Artifacts: [`data/confusion_matrix.png`](data/confusion_matrix.png) and [`data/m
 |-- k8s/                          # 12 Kubernetes manifests (kustomize)
 |-- pipeline/                     # Fail-fast preprocessing stages
 |-- services/                     # Auth, image mgmt, inference (Strategy/Decorator), clinical results, audit
-|-- tests/                        # 102 automated tests (unit, integration, profiling, system)
+|-- tests/                        # 103 automated tests (unit, integration, concurrency, profiling, system)
 |-- utils/                        # Logging and exception hierarchy
 |-- Dockerfile / docker-compose.yml
 |-- requirements.txt
@@ -97,7 +97,7 @@ Default demo users (password `password123`): `radiologist`, `technician`, `admin
 ### Tests, evaluation and benchmark
 
 ```bash
-pytest -v --cov=. --cov-fail-under=75 tests/      # 102 tests
+pytest -v --cov=. --cov-fail-under=75 tests/      # 103 tests
 python ai/evaluate_model.py                       # recompute metrics on the test split
 python ai/plot_confusion_matrix.py                # confusion matrix chart
 python tests/profiling/benchmark_performance.py   # latency / throughput benchmark

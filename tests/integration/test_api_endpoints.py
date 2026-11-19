@@ -526,3 +526,33 @@ class TestApiIntegration:
             headers=rad_headers,
         )
         assert pdf_res.status_code == 200
+
+    def test_concurrent_inference_thread_safety(self, app, sample_xray_image: bytes):
+        """27. Verify concurrent multi-threaded inference executes safely without race conditions."""
+        from concurrent.futures import ThreadPoolExecutor
+
+        prep_svc = app.state.preprocessing_service
+        inf_svc = app.state.inference_service
+        img = Image.open(io.BytesIO(sample_xray_image)).convert("RGB")
+        img_arr = np.asarray(img, dtype=np.uint8)
+        pre = prep_svc.preprocess(img_arr, image_id=1, filename="concurrent_test.jpg", user_id=1)
+        tensor = pre["preprocessed_image"]
+
+        def _worker(idx: int):
+            res = inf_svc.classify(
+                preprocessed_image=tensor,
+                image_id=idx + 1,
+                user_id=1,
+                filename=f"concurrent_{idx}.jpg",
+                original_image=img_arr,
+            )
+            return res["classification"], sum(res["all_probabilities"].values())
+
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            outputs = list(pool.map(_worker, range(8)))
+
+        assert len(outputs) == 8
+        first_label = outputs[0][0]
+        for label, prob_sum in outputs:
+            assert label == first_label
+            assert abs(prob_sum - 1.0) < 1e-2

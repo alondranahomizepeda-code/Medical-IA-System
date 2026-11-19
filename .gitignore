@@ -25,6 +25,9 @@ data/.tmp/
 !data/performance_benchmark_results.json
 logs/*.log
 
+# Secrets (use k8s/secret.example.yaml as template)
+k8s/secret.yaml
+
 # Database
 *.db
 *.sqlite3
