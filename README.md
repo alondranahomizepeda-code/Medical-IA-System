@@ -68,7 +68,7 @@ Artifacts: [`data/confusion_matrix.png`](data/confusion_matrix.png) and [`data/m
 |-- k8s/                          # 12 Kubernetes manifests (kustomize)
 |-- pipeline/                     # Fail-fast preprocessing stages
 |-- services/                     # Auth, image mgmt, inference (Strategy/Decorator), clinical results, audit
-|-- tests/                        # 105 automated tests (unit, integration, concurrency, profiling, system)
+|-- tests/                        # 105 automated tests + CRITICAL_SCENARIOS_MAP.md
 |-- utils/                        # Logging and exception hierarchy
 |-- Dockerfile / docker-compose.yml
 |-- requirements.txt
@@ -103,7 +103,7 @@ python ai/plot_confusion_matrix.py                # confusion matrix chart
 python tests/profiling/benchmark_performance.py   # latency / throughput benchmark
 ```
 
-Mean end-to-end CPU latency is ~153 ms per radiograph (RNF-01 target: < 3 s).
+Mean end-to-end CPU latency is ~153 ms per radiograph (RNF-01 target: < 3 s). See [`tests/CRITICAL_SCENARIOS_MAP.md`](tests/CRITICAL_SCENARIOS_MAP.md) for the mapping of critical clinical and security scenarios to automated tests.
 
 ---
 
